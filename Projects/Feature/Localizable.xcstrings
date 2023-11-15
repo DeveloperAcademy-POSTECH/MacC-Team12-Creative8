@@ -89,7 +89,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ View on archive View"
+            "value" : "Find %@ on Archive"
           }
         }
       }
@@ -198,7 +198,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cancel the bookmarking of the performance"
+            "value" : "Undo Bookmark"
           }
         }
       }
@@ -208,17 +208,17 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Press the bookmark button to mark the performance you're interested in"
+            "value" : "Create shortcuts to your favorite shows."
           }
         }
       }
     },
-    "관심있는 아티스트 정보를 빠르게\n확인하고 싶으시다면 찜을 해주세요" : {
+    "관심있는 아티스트 정보를 빠르게" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Artists you like will show here.\nYou can check out their recent shows anytime in here."
+            "value" : "Artists you like will show here. "
           }
         }
       }
@@ -289,7 +289,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "You can also see it in the Archive View"
+            "value" : "You can also find them in Archive."
           }
         }
       }
@@ -299,7 +299,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bookmarked Perfomance"
+            "value" : "Bookmarked Shows"
           }
         }
       }
@@ -309,7 +309,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "There is no bookmarked performance."
+            "value" : "No Bookmarks"
           }
         }
       }
@@ -484,7 +484,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "see the alllll perfo"
+            "value" : "All Shows"
           }
         }
       }
@@ -556,6 +556,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Non Korean Artist"
+          }
+        }
+      }
+    },
+    "확인하고 싶으시다면 찜을 해주세요" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can check out their recent shows anytime in here."
           }
         }
       }

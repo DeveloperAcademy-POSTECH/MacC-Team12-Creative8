@@ -19,14 +19,18 @@ struct EmptyMainView: View {
     VStack {
       Spacer()
       Text("찜한 아티스트가 없습니다")
+        .bold()
         .font(.callout)
         .padding(.bottom)
         .foregroundStyle(Color.mainBlack)
-      Text("관심있는 아티스트 정보를 빠르게\n확인하고 싶으시다면 찜을 해주세요")
-        .font(.footnote)
-        .multilineTextAlignment(.center)
-        .foregroundStyle(Color.fontGrey2)
-        .padding(.bottom)
+      VStack(alignment: .center, spacing: 4) {
+        Text("관심있는 아티스트 정보를 빠르게")
+        Text("확인하고 싶으시다면 찜을 해주세요")
+      }
+      .font(.footnote)
+      .multilineTextAlignment(.center)
+      .foregroundStyle(Color.fontGrey2)
+      .padding(.bottom)
       Button {
         selectedTab = .search
       } label: {

@@ -173,7 +173,7 @@ struct BookmarkedSetlistsView: View {
       HStack {
         Spacer()
         Text("\(vm.artistInfo.name) 보관함에서 보기")
-          .underline()
+        Image(systemName: "arrow.right")
       }
       .font(.subheadline)
       .foregroundColor(Color.mainBlack)
