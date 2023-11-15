@@ -2,7 +2,6 @@
   "sourceLanguage" : "ko",
   "strings" : {
     " " : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -13,7 +12,6 @@
       }
     },
     ", " : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -57,7 +55,6 @@
       }
     },
     "* 찜한 아티스트가 최대 5명까지 메인화면에 등장합니다" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -68,7 +65,6 @@
       }
     },
     "%@" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -79,7 +75,6 @@
       }
     },
     "%@ " : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -90,7 +85,6 @@
       }
     },
     "%@ 보관함에서 보기" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -101,7 +95,6 @@
       }
     },
     "%@, %@" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -118,7 +111,6 @@
       }
     },
     "%@의 최근 공연" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -129,7 +121,6 @@
       }
     },
     "01 %@" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -151,7 +142,6 @@
       }
     },
     "Setlist" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -162,7 +152,6 @@
       }
     },
     "Setlist.fm" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -173,7 +162,6 @@
       }
     },
     "Setlist.fm 바로가기" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -205,8 +193,18 @@
         }
       }
     },
+    "공연" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tour"
+          }
+        }
+      }
+    },
     "공연 북마크 취소" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -217,7 +215,6 @@
       }
     },
     "관심있는 공연에 북마크를 눌러 표시해주세요" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -228,7 +225,6 @@
       }
     },
     "관심있는 아티스트 정보를 빠르게" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -239,7 +235,6 @@
       }
     },
     "관심있는 아티스트의 세트리스트를" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -250,7 +245,6 @@
       }
     },
     "국내 아티스트" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -260,8 +254,18 @@
         }
       }
     },
+    "날짜" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date"
+          }
+        }
+      }
+    },
     "더보기" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -283,7 +287,6 @@
       }
     },
     "바로 확인할 수 있어요." : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -294,7 +297,6 @@
       }
     },
     "보관함" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -305,7 +307,6 @@
       }
     },
     "보관함에서도 볼 수 있습니다" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -316,7 +317,6 @@
       }
     },
     "북마크한 공연" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -327,7 +327,6 @@
       }
     },
     "북마크한 공연이 없습니다." : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -360,7 +359,6 @@
       }
     },
     "세트리스트 보기" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -371,7 +369,6 @@
       }
     },
     "세트리스트 정보 수정을 원하시나요?" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -382,7 +379,6 @@
       }
     },
     "세트리스트 정보가 아직 없습니다" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -393,7 +389,6 @@
       }
     },
     "세트리스트 정보가 없습니다." : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -415,7 +410,6 @@
       }
     },
     "세트리스트가 없습니다" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -426,7 +420,6 @@
       }
     },
     "세트리스트를 직접 작성하고 싶으신가요?\nSetlist.fm 바로가기에서 추가하세요" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -437,7 +430,6 @@
       }
     },
     "아직 아티스트 3명이 선택되지 않았어요." : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -448,7 +440,6 @@
       }
     },
     "아티스트 찜하기" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -481,7 +472,6 @@
       }
     },
     "에서 수정할 수 있습니다" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -492,7 +482,6 @@
       }
     },
     "에서 직접 추가할 수 있어요." : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -503,7 +492,6 @@
       }
     },
     "잘못된 세트리스트 정보를 발견하셨다면," : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -513,8 +501,18 @@
         }
       }
     },
+    "장소" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Venue"
+          }
+        }
+      }
+    },
     "전체 공연 보기" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -525,7 +523,6 @@
       }
     },
     "찜한 가수의 세트리스트가 없다면," : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -547,7 +544,6 @@
       }
     },
     "찜한 아티스트 중 상단의 5명이 메인화면에 등장합니다\n변경을 원하신다면 아티스트를 꾹 눌러 순서를 옮겨주세요" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -558,7 +554,6 @@
       }
     },
     "찜한 아티스트가 없습니다" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -569,7 +564,6 @@
       }
     },
     "최근 검색" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -580,7 +574,6 @@
       }
     },
     "플레이리스트 내보내기" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -591,7 +584,6 @@
       }
     },
     "해외 아티스트" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -602,7 +594,6 @@
       }
     },
     "확인하고 싶으시다면 찜을 해주세요" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
