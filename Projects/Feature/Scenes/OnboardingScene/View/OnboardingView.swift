@@ -63,11 +63,23 @@ public struct OnboardingView: View {
     VStack(alignment: .leading) {
       Spacer().frame(height: 70)
       Text("아티스트 찜하기")
-        .font(.system(.headline))
+        .font(.system(size: 24))
+        .bold()
         .foregroundStyle(Color.mainBlack)
-      Spacer().frame(height: 16)
-      Text("찜한 아티스트 중 최대 5명까지 메인화면에 나옵니다.\n메인 화면에 없는 아티스트는 보관함에서 확인해주세요.")
-        .font(.system(.footnote))
+//      Spacer().frame(height: 16)
+        .padding(.bottom)
+      Group {
+        VStack(alignment: .leading, spacing: 4) {
+          Text("관심있는 아티스트의 세트리스트를")
+          Text("바로 확인할 수 있어요.")
+        }
+        .foregroundStyle(Color.mainBlack)
+        .font(.system(size: 14))
+      }
+//      Spacer().frame(height: 16)
+      .padding(.bottom)
+      Text("* 찜한 아티스트가 최대 5명까지 메인화면에 등장합니다")
+        .font(.system(.caption2))
         .foregroundStyle(Color.fontGrey2)
         .opacity(0.8)
       Spacer().frame(height: 48)

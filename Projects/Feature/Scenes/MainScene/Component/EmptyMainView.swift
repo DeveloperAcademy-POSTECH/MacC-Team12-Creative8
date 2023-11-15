@@ -27,8 +27,13 @@ struct EmptyMainView: View {
         .multilineTextAlignment(.center)
         .foregroundStyle(Color.fontGrey2)
         .padding(.bottom)
-      Button(.init("아티스트 찜하러 가기 􀊫")) {
+      Button {
         selectedTab = .search
+      } label: {
+        HStack {
+          Text("아티스트 찜하러 가기")
+          Image(systemName: "magnifyingglass")
+        }
       }
       .foregroundStyle(Color.mainWhite)
       .font(.system(size: 14))
