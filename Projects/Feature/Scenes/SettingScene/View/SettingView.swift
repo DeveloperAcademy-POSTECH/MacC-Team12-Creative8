@@ -80,11 +80,11 @@ struct SectionTitleView: View {
   
   var body: some View {
     VStack(alignment: .leading) {
-      Text(sectionTitle)
+      Text(.init(sectionTitle))
         .font(.headline)
         .foregroundStyle(Color.mainBlack)
         .padding(.vertical)
-      Text(sectionDescription)
+      Text(.init(sectionDescription))
         .font(.footnote)
         .foregroundStyle(Color.fontGrey2)
         .padding(.bottom, 30)
@@ -101,7 +101,7 @@ struct SetlistfmLinkButton: View {
     Link(destination: URL(string: setlistfmURL)!, label: {
       HStack {
         Spacer()
-        Text(linkLabel)
+        Text(.init(linkLabel))
           .font(.system(.callout, weight: .semibold))
         Spacer()
       }
@@ -120,7 +120,7 @@ struct LinkLabelView: View {
   
   var body: some View {
     HStack {
-      Text(linkLabel)
+      Text(.init(linkLabel))
         .font(.subheadline)
         .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 0))
       Spacer()

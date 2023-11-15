@@ -78,7 +78,7 @@ struct TermsTitleView: View {
   
   var body: some View {
     VStack(alignment: .leading) {
-      Text(title)
+      Text(.init(title))
         .font(.system(.callout, weight: .bold))
         .foregroundStyle(Color.mainBlack)
       Divider()
@@ -96,14 +96,14 @@ struct TermsView: View {
   
   var body: some View {
     VStack(alignment: .leading) {
-      Text(terms[0])
+      Text(.init(terms[0]))
         .font(.footnote)
         .fixedSize(horizontal: false, vertical: true)
         .padding(.top, 16)
       ForEach(1..<terms.count, id: \.self) { index in
         HStack(alignment: .top) {
           Text(bulletPoint == "•" ? bulletPoint : "\(index).")
-          Text(terms[index])
+          Text(.init(terms[index]))
             .lineLimit(nil)
             .fixedSize(horizontal: false, vertical: true)
         }

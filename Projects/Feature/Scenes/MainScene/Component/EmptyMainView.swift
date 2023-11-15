@@ -27,7 +27,7 @@ struct EmptyMainView: View {
         .multilineTextAlignment(.center)
         .foregroundStyle(Color.fontGrey2)
         .padding(.bottom)
-      Button("아티스트 찜하러 가기 →") {
+      Button(.init("아티스트 찜하러 가기 􀊫")) {
         selectedTab = .search
       }
       .foregroundStyle(Color.mainWhite)

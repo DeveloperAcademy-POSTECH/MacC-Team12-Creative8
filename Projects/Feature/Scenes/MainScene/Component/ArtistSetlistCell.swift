@@ -45,7 +45,7 @@ struct ArtistSetlistCell: View {
             .lineLimit(1)
           Group {
             if firstSong == "세트리스트 정보가 아직 없습니다" {
-              Text(firstSong)
+              Text(.init(firstSong), comment: "메인화면 공연 세트리스트 없을 때")
             } else {
               Text("01 \(firstSong)")
             }

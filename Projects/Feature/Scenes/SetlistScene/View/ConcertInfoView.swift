@@ -42,12 +42,12 @@ struct InfoComponent: View {
   
   var body: some View {
     HStack {
-      Text(text1)
+      Text(.init(text1))
         .foregroundStyle(Color.mainBlack)
         .padding(12)
         .background(Color.mainGrey1.cornerRadius(12))
       Spacer()
-      Text(text2)
+      Text(.init(text2))
         .font(.body)
         .foregroundStyle(Color.mainBlack)
         .frame(width: UIWidth * 0.5, alignment: .leading)

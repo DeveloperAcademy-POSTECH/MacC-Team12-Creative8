@@ -94,7 +94,7 @@ struct SearchView: View {
               .bold()
               .foregroundStyle(Color.mainBlack)
             Spacer()
-            Button("모두 지우기") {
+            Button(.init("모두 지우기")) {
               dataManager.deleteSearchHistoryAll()
             }
             .foregroundStyle(Color.mainOrange)

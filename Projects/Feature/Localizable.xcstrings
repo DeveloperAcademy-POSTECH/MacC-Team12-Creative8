@@ -1,0 +1,545 @@
+{
+  "sourceLanguage" : "ko",
+  "strings" : {
+    " " : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " "
+          }
+        }
+      }
+    },
+    ", " : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ","
+          }
+        }
+      }
+    },
+    "‘SETA’는 Setlist.fm API를 활용하여 공연 정보 및 세트리스트의 데이터를 받아오고 있습니다." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "seta is good"
+          }
+        }
+      }
+    },
+    "‘SETA’는 개인정보보호법에 따라 이용자들의 개인정보 보호 및 권익을 보호하고자 다음과 같은 처리방침을 두고 있습니다. 당사는 개인정보처리방침을 개정하는 경우 화면 공지사항을 통하여 공지할 것입니다." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "seta has 처리방침 followsa"
+          }
+        }
+      }
+    },
+    "\"개인정보의 처리 목적 : 당사에서 개인정보를 별도로 저장하거나 이용하지 않습니다." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "objective: 저장안해염"
+          }
+        }
+      }
+    },
+    "%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        }
+      }
+    },
+    "%@ " : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        }
+      }
+    },
+    "%@ 보관함에서 보기" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ View on archive View"
+          }
+        }
+      }
+    },
+    "%@, %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@, %2$@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, %2$@"
+          }
+        }
+      }
+    },
+    "%@의 최근 공연" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ Concert Setlist and Tour Dates"
+          }
+        }
+      }
+    },
+    "01 %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "01 %@"
+          }
+        }
+      }
+    },
+    "API 사용 조건으로, Setlist.fm 데이터를 있는 그대로 사용자에게 제공해야 하며 Setlist.fm 데이터가 사용되는 웹사이트 또는 클라이언트 애플리케이션에 귀속을 표시해야 합니다. API를 사용할 때는 각 API 응답에 포함된 어트리뷰션 링크를 사용해야 합니다." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "api사용조건설명설명영어로"
+          }
+        }
+      }
+    },
+    "Setlist" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Setlist"
+          }
+        }
+      }
+    },
+    "Setlist.fm" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Setlist.fm"
+          }
+        }
+      }
+    },
+    "Setlist.fm 바로가기" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Go to Setlist.fm"
+          }
+        }
+      }
+    },
+    "Setlist.fm에 대한 링크에 nofollow 속성을 태그하거나, 검색 엔진이 링크를 팔로우하거나 점수를 매기지 못하도록 방지 및 방해해서는 안 됩니다. 응답에 어트리뷰션 링크가 포함되어 있지 않거나 검색 엔진이 읽을 수 있는 방식으로 링크를 표시할 수 없는 경우(예: 자바스크립트 요청을 통해 동적으로 API를 사용하는 경우) 사이트의 홈페이지로 연결되는 링크를 사용해야 합니다. 또한 API에 제공된 각 링크를 유지 및 관리해야 합니다." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "왜안될끄아아아 nofollow api keepgoing lesssssgod이건된[ㅔ"
+          }
+        }
+      }
+    },
+    "검색" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search"
+          }
+        }
+      }
+    },
+    "공연 북마크 취소" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel the bookmarking of the performance"
+          }
+        }
+      }
+    },
+    "관심있는 공연에 북마크를 눌러 표시해주세요" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Press the bookmark button to mark the performance you're interested in"
+          }
+        }
+      }
+    },
+    "관심있는 아티스트 정보를 빠르게\n확인하고 싶으시다면 찜을 해주세요" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get information about artists you're interested in quickly\nIf you want to check, please archive it"
+          }
+        }
+      }
+    },
+    "국내 아티스트" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Korean Artist"
+          }
+        }
+      }
+    },
+    "더보기" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "More"
+          }
+        }
+      }
+    },
+    "모두 지우기" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "erase all"
+          }
+        }
+      }
+    },
+    "보관함" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archive"
+          }
+        }
+      }
+    },
+    "보관함에서도 볼 수 있습니다" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can also see it in the Archive View"
+          }
+        }
+      }
+    },
+    "북마크한 공연" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bookmarked Perfomance"
+          }
+        }
+      }
+    },
+    "북마크한 공연이 없습니다." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There is no bookmarked performance."
+          }
+        }
+      }
+    },
+    "서비스 이용 약관" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "adasaf"
+          }
+        }
+      }
+    },
+    "세트리스트" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Setlist"
+          }
+        }
+      }
+    },
+    "세트리스트 보기" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View Setlist"
+          }
+        }
+      }
+    },
+    "세트리스트 정보 수정을 원하시나요?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Do you want to modify the setlist information?"
+          }
+        }
+      }
+    },
+    "세트리스트 정보가 아직 없습니다" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There are no songs in this setlist"
+          }
+        }
+      }
+    },
+    "세트리스트 정보가 없습니다." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There's no information on the setlist "
+          }
+        }
+      }
+    },
+    "세트리스트 추가 및 수정하기" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "add or edit setlist"
+          }
+        }
+      }
+    },
+    "세트리스트가 없습니다" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There's no setlist"
+          }
+        }
+      }
+    },
+    "세트리스트를 직접 작성하고 싶으신가요?\nSetlist.fm 바로가기에서 추가하세요" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "lesssss go setlist.fm"
+          }
+        }
+      }
+    },
+    "아직 아티스트 3명이 선택되지 않았어요." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "no 3people~"
+          }
+        }
+      }
+    },
+    "아티스트 찜하기" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "like artist"
+          }
+        }
+      }
+    },
+    "아티스트 찜하러 가기 􀊫" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search Artists  􀊫"
+          }
+        }
+      }
+    },
+    "아티스트를 검색하세요" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "search Artist.."
+          }
+        }
+      }
+    },
+    "에서 수정할 수 있습니다" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "can edit"
+          }
+        }
+      }
+    },
+    "에서 직접 추가할 수 있어요." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "can add info"
+          }
+        }
+      }
+    },
+    "잘못된 세트리스트 정보를 발견하셨다면," : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "if you find any info..."
+          }
+        }
+      }
+    },
+    "전체 공연 보기" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "see the alllll perfo"
+          }
+        }
+      }
+    },
+    "찜한 가수의 세트리스트가 없다면," : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "if liked artist has no setlist"
+          }
+        }
+      }
+    },
+    "찜한 아티스트" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "liked artists"
+          }
+        }
+      }
+    },
+    "찜한 아티스트 중 상단의 5명이 메인화면에 등장합니다\n변경을 원하신다면 아티스트를 꾹 눌러 순서를 옮겨주세요" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "only top 5 liked artist shows in main view"
+          }
+        }
+      }
+    },
+    "찜한 아티스트 중 최대 5명까지 메인화면에 나옵니다.\n메인 화면에 없는 아티스트는 보관함에서 확인해주세요." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " if there are no artist you want see it, please check it on archive view"
+          }
+        }
+      }
+    },
+    "찜한 아티스트가 없습니다" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "there's no liked artist"
+          }
+        }
+      }
+    },
+    "최근 검색" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "recent rjator"
+          }
+        }
+      }
+    },
+    "플레이리스트 내보내기" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "export playlist"
+          }
+        }
+      }
+    },
+    "해외 아티스트" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non Korean Artist"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

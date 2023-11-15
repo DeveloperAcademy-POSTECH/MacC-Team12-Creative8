@@ -51,7 +51,7 @@ extension ArchivingView {
       }
       .foregroundStyle(viewModel.selectSegment == .bookmark ? Color.mainBlack : Color.fontGrey3)
 
-      Button("찜한 아티스트") {
+      Button(.init("찜한 아티스트")) {
         viewModel.selectSegment = .likeArtist
       }
       .foregroundStyle(viewModel.selectSegment == .bookmark ? Color.fontGrey3 : Color.mainBlack)
