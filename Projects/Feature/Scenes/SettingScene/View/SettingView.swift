@@ -28,20 +28,20 @@ public struct SettingView: View {
           VStack(alignment: .leading) {
             SectionTitleView(
               sectionTitle: "세트리스트 추가 및 수정하기",
-              sectionDescription: "Setlist.fm에서 다녀온 공연의 세트리스트를\n추가 및 수정하세요")
+              sectionTopDescription: "Setlist.fm에서 다녀온 공연의 세트리스트를", sectionBottomDescription: "추가 및 수정하세요")
             SetlistfmLinkButton(
               setlistfmURL: "https://www.setlist.fm",
               linkLabel: "Setlist.fm 바로가기")
             .padding(.bottom, 20)
           }
-
+          
           // 서비스 이용 관련
           VStack(alignment: .leading) {
             Divider()
               .foregroundStyle(Color.lineGrey1)
             SectionTitleView(
               sectionTitle: "서비스 이용 관련",
-              sectionDescription: "음악으로 연결되는 순간,\nSeta의 서비스 약관을 확인해보세요")
+              sectionTopDescription: "음악으로 연결되는 순간,", sectionBottomDescription: "Seta의 서비스 약관을 확인해보세요")
             // 이용 약관
             NavigationLink {
               ServiceExplainView()
@@ -51,7 +51,7 @@ public struct SettingView: View {
             }
             Divider()
               .foregroundStyle(Color.lineGrey1)
-
+            
             // Setlist.fm 약관
             NavigationLink {
               TermsOfSetlistfm()
@@ -61,7 +61,7 @@ public struct SettingView: View {
             }
             Divider()
               .foregroundStyle(Color.lineGrey1)
-
+            
             // 문의하기
             AskView()
           }
@@ -76,7 +76,8 @@ public struct SettingView: View {
 struct SectionTitleView: View {
   
   var sectionTitle: String
-  var sectionDescription: String
+  var sectionTopDescription: String
+  var sectionBottomDescription: String
   
   var body: some View {
     VStack(alignment: .leading) {
@@ -84,10 +85,15 @@ struct SectionTitleView: View {
         .font(.headline)
         .foregroundStyle(Color.mainBlack)
         .padding(.vertical)
-      Text(.init(sectionDescription))
-        .font(.footnote)
-        .foregroundStyle(Color.fontGrey2)
-        .padding(.bottom, 30)
+      Group {
+        VStack(alignment: .leading) {
+          Text(.init(sectionTopDescription))
+          Text(.init(sectionBottomDescription))
+        }
+      }
+      .font(.footnote)
+      .foregroundStyle(Color.fontGrey2)
+      .padding(.bottom, 30)
     }
   }
 }

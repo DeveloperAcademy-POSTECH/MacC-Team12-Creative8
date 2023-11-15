@@ -18,7 +18,7 @@ struct AskView: View {
     Button(action: {
       commentsButtonTapped()
     }, label: {
-      LinkLabelView(linkLabel: "문의하기")
+      LinkLabelView(linkLabel: .init("문의하기"))
     })
   }
   

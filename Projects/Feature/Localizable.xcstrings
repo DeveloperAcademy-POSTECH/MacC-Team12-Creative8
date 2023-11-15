@@ -21,39 +21,6 @@
         }
       }
     },
-    "‘SETA’는 Setlist.fm API를 활용하여 공연 정보 및 세트리스트의 데이터를 받아오고 있습니다." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "seta is good"
-          }
-        }
-      }
-    },
-    "‘SETA’는 개인정보보호법에 따라 이용자들의 개인정보 보호 및 권익을 보호하고자 다음과 같은 처리방침을 두고 있습니다. 당사는 개인정보처리방침을 개정하는 경우 화면 공지사항을 통하여 공지할 것입니다." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "seta has 처리방침 followsa"
-          }
-        }
-      }
-    },
-    "\"개인정보의 처리 목적 : 당사에서 개인정보를 별도로 저장하거나 이용하지 않습니다." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "objective: 저장안해염"
-          }
-        }
-      }
-    },
     "* 찜한 아티스트가 최대 5명까지 메인화면에 등장합니다" : {
       "localizations" : {
         "en" : {
@@ -130,13 +97,13 @@
         }
       }
     },
-    "API 사용 조건으로, Setlist.fm 데이터를 있는 그대로 사용자에게 제공해야 하며 Setlist.fm 데이터가 사용되는 웹사이트 또는 클라이언트 애플리케이션에 귀속을 표시해야 합니다. API를 사용할 때는 각 API 응답에 포함된 어트리뷰션 링크를 사용해야 합니다." : {
+    "Seta의 서비스 약관을 확인해보세요" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "api사용조건설명설명영어로"
+            "value" : "fubdasda"
           }
         }
       }
@@ -161,6 +128,17 @@
         }
       }
     },
+    "Setlist.fm API 약관" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "apiexplain"
+          }
+        }
+      }
+    },
     "Setlist.fm 바로가기" : {
       "localizations" : {
         "en" : {
@@ -171,13 +149,35 @@
         }
       }
     },
-    "Setlist.fm에 대한 링크에 nofollow 속성을 태그하거나, 검색 엔진이 링크를 팔로우하거나 점수를 매기지 못하도록 방지 및 방해해서는 안 됩니다. 응답에 어트리뷰션 링크가 포함되어 있지 않거나 검색 엔진이 읽을 수 있는 방식으로 링크를 표시할 수 없는 경우(예: 자바스크립트 요청을 통해 동적으로 API를 사용하는 경우) 사이트의 홈페이지로 연결되는 링크를 사용해야 합니다. 또한 API에 제공된 각 링크를 유지 및 관리해야 합니다." : {
+    "Setlist.fm 약관" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "왜안될끄아아아 nofollow api keepgoing lesssssgod이건된[ㅔ"
+            "value" : "a메ㅑdirrhk"
+          }
+        }
+      }
+    },
+    "Setlist.fm 약관 자세히 보기" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "specify자세히약관보기"
+          }
+        }
+      }
+    },
+    "Setlist.fm에서 다녀온 공연의 세트리스트를" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "asdasdasda?"
           }
         }
       }
@@ -189,6 +189,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Search"
+          }
+        }
+      }
+    },
+    "공연" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tour"
           }
         }
       }
@@ -243,6 +254,17 @@
         }
       }
     },
+    "날짜" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date"
+          }
+        }
+      }
+    },
     "더보기" : {
       "localizations" : {
         "en" : {
@@ -260,6 +282,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "erase all"
+          }
+        }
+      }
+    },
+    "문의하기" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "문의는포도가먹고"
           }
         }
       }
@@ -310,6 +343,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No Bookmarks"
+          }
+        }
+      }
+    },
+    "서비스 이용 관련" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "써비스dldyd관룐"
           }
         }
       }
@@ -417,6 +461,17 @@
         }
       }
     },
+    "아티스트 보기" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View Artist"
+          }
+        }
+      }
+    },
     "아티스트 찜하기" : {
       "localizations" : {
         "en" : {
@@ -469,12 +524,56 @@
         }
       }
     },
+    "음악으로 연결되는 순간," : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "moment커넥스"
+          }
+        }
+      }
+    },
+    "음악으로 연결되는 순간,Seta의 서비스 약관을 확인해보세요" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이게안되네..."
+          }
+        }
+      }
+    },
+    "이용 약관" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dldyd약관"
+          }
+        }
+      }
+    },
     "잘못된 세트리스트 정보를 발견하셨다면," : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "if you find any info..."
+          }
+        }
+      }
+    },
+    "장소" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Venue"
           }
         }
       }
@@ -536,6 +635,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "recent rjator"
+          }
+        }
+      }
+    },
+    "추가 및 수정하세요" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "addandedit"
+          }
+        }
+      }
+    },
+    "타사 모듈 사용에 대한 안내 : 당사의 어플리케이션은 사용자 개인정보 관련된 타사 모듈을 탑재하지 않았습니다." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "타사모듈"
           }
         }
       }

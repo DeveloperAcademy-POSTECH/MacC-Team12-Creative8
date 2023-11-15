@@ -39,7 +39,7 @@ struct ArchiveConcertInfoCell: View {
       }
 			Spacer()
 			Menu {
-        NavigationLink("아티스트 보기") { ArtistView(selectedTab: $selectedTab, artistName: info.artistInfo.name, artistAlias: info.artistInfo.alias, artistMbid: info.artistInfo.mbid) }
+        NavigationLink(.init("아티스트 보기")) { ArtistView(selectedTab: $selectedTab, artistName: info.artistInfo.name, artistAlias: info.artistInfo.alias, artistMbid: info.artistInfo.mbid) }
 				NavigationLink("세트리스트 보기") {
           SetlistView(setlistId: info.setlist.setlistId, artistInfo: ArtistInfo(name: info.artistInfo.name, mbid: info.artistInfo.mbid))
 				}
