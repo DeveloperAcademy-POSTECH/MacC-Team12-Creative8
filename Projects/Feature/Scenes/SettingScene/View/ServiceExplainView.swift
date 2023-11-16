@@ -18,7 +18,7 @@ struct ServiceExplainView: View {
       Color(Color.backgroundGrey)
       ScrollView {
         VStack {
-          SectionBackgroundView(height: 1050)
+          SectionBackgroundView()
             .overlay {
               VStack(alignment: .leading) {
                 TermsTitleView(title: "서비스 이용 약관")
@@ -47,7 +47,7 @@ struct TermsOfSetlistfm: View {
       Color(Color.backgroundGrey)
       ScrollView {
         VStack {
-          SectionBackgroundView(height: 570)
+          SectionBackgroundView()
             .overlay {
               VStack(alignment: .leading) {
                 TermsTitleView(title: "Setlist.fm API 약관")
@@ -106,6 +106,7 @@ struct TermsView: View {
           Text(.init(terms[index]))
             .lineLimit(nil)
             .fixedSize(horizontal: false, vertical: true)
+            .padding(.bottom)
         }
         .font(.footnote)
         .lineSpacing(4)
@@ -117,12 +118,12 @@ struct TermsView: View {
 
 struct SectionBackgroundView: View {
   
-  var height: CGFloat
+//  var height: CGFloat
   
   var body: some View {
     RoundedRectangle(cornerRadius: 12)
       .fill(Color.settingTextBoxWhite)
-      .frame(height: height)
+//      .frame(height: height)
   }
 }
 
