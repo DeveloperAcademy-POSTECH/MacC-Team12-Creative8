@@ -23,11 +23,5 @@ let project = Project.makeModule(
   ],
   sources: ["Sources/**"],
   resources: ["Resources/**"],
-  infoPlist: .extendingDefault(with: [
-    "CFBundleShortVersionString": "1.0.1",
-    "CFBundleVersion": "1",
-    "UIMainStoryboardFile": "",
-    "UILaunchStoryboardName": "LaunchScreen",
-    "ENABLE_TESTS": .boolean(true)
-  ])
+  infoPlist: .file(path: "Support/Info.plist")
 )

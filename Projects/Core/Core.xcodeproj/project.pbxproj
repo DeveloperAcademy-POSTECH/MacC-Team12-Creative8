@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		03E77F13A6D46A0E34006733 /* SearchHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A32F1995BE8972BD993B58 /* SearchHistoryModel.swift */; };
+		0C6A986F5EE73D0371CC24A1 /* SpotifyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521DFD8C0C6556F13D1C19CA /* SpotifyService.swift */; };
 		14F67ACCF1E2EA452132B96E /* ArtistListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03512B6F11F4C7FDA6C687A /* ArtistListModel.swift */; };
 		323BDCF0BE9904DD1057E69D /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B667B36D9B1DD2BBFB353DB /* APIKeys.swift */; };
 		48468737968AC50E4DA8C753 /* LikeArtistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752E25910681A644F3142B68 /* LikeArtistModel.swift */; };
+		51B1D4ED7ECB508C4A97445F /* SpotifyAPI in Frameworks */ = {isa = PBXBuildFile; productRef = F46EB0C818DE9ABAA254D9B3 /* SpotifyAPI */; };
 		566F42D3871D02FD3BA0E7B6 /* SetlistListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75600AD4887E89C2223BF659 /* SetlistListModel.swift */; };
 		882E5DBFC616F2C001A621AA /* ArtistDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7A053F3B85B42931EE002B /* ArtistDataManager.swift */; };
 		8FA0920398EC647EC4B21451 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2623E283DF2E5382F8E9EA4 /* OnboardingModel.swift */; };
@@ -26,6 +28,7 @@
 		E1570A49F96FA15699EEE485 /* KoreanConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4F12A755C30296E33F86F /* KoreanConverter.swift */; };
 		E443D461EB2E1D55C196E6F1 /* SaveArtistInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DD837E5346A7627964873 /* SaveArtistInfo.swift */; };
 		E6804E36D6F5019B528E9890 /* GeniusArtistsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C777C1122A5B5702FCADF8 /* GeniusArtistsModel.swift */; };
+		E7494D59CF3A2D7FFFEE3DA2 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = B03BA87A737D60691A479935 /* KeychainAccess */; };
 		F6FB06B6DA0BE1FE264F7B7E /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109A8C5BADA31C5966791E4F /* SearchModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +75,7 @@
 		3E313EC3E53C9ED17660FD3F /* CoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B7A7F738C7D540C1FDA072E /* SwiftDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataManager.swift; sourceTree = "<group>"; };
 		4F5F16996E458A8A1147E2AE /* ArchivedConcertInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedConcertInfo.swift; sourceTree = "<group>"; };
+		521DFD8C0C6556F13D1C19CA /* SpotifyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyService.swift; sourceTree = "<group>"; };
 		752E25910681A644F3142B68 /* LikeArtistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeArtistModel.swift; sourceTree = "<group>"; };
 		75600AD4887E89C2223BF659 /* SetlistListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetlistListModel.swift; sourceTree = "<group>"; };
 		845DD837E5346A7627964873 /* SaveArtistInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveArtistInfo.swift; sourceTree = "<group>"; };
@@ -93,6 +97,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7494D59CF3A2D7FFFEE3DA2 /* KeychainAccess in Frameworks */,
+				51B1D4ED7ECB508C4A97445F /* SpotifyAPI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +172,7 @@
 		6102295BF8EA6BD3F00B6FE2 /* SwiftDataManager */ = {
 			isa = PBXGroup;
 			children = (
+				521DFD8C0C6556F13D1C19CA /* SpotifyService.swift */,
 				4B7A7F738C7D540C1FDA072E /* SwiftDataManager.swift */,
 			);
 			path = SwiftDataManager;
@@ -293,6 +300,10 @@
 			dependencies = (
 			);
 			name = Core;
+			packageProductDependencies = (
+				B03BA87A737D60691A479935 /* KeychainAccess */,
+				F46EB0C818DE9ABAA254D9B3 /* SpotifyAPI */,
+			);
 			productName = Core;
 			productReference = 2B0FA7F85F3573FB522F9478 /* Core.framework */;
 			productType = "com.apple.product-type.framework";
@@ -316,6 +327,10 @@
 				en,
 			);
 			mainGroup = 62824534F75515F48E8114A7;
+			packageReferences = (
+				8CE900602F17B04FE9220739 /* XCRemoteSwiftPackageReference "SpotifyAPI" */,
+				E3F14A623F45319B6F37ED8C /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+			);
 			productRefGroup = 250C62EE12DB56ECEBB473C3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -395,6 +410,7 @@
 				882E5DBFC616F2C001A621AA /* ArtistDataManager.swift in Sources */,
 				E1570A49F96FA15699EEE485 /* KoreanConverter.swift in Sources */,
 				9AC823A1A6AD6300B6EBE04A /* SetlistDataService.swift in Sources */,
+				0C6A986F5EE73D0371CC24A1 /* SpotifyService.swift in Sources */,
 				B5AEB3196F16E3C52EC16288 /* SwiftDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -666,6 +682,36 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8CE900602F17B04FE9220739 /* XCRemoteSwiftPackageReference "SpotifyAPI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Peter-Schorn/SpotifyAPI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.4;
+			};
+		};
+		E3F14A623F45319B6F37ED8C /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B03BA87A737D60691A479935 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = KeychainAccess;
+		};
+		F46EB0C818DE9ABAA254D9B3 /* SpotifyAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SpotifyAPI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 83ADD9484DDC11E75E9F182F /* Project object */;
 }

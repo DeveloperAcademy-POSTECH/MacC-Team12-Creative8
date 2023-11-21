@@ -11,7 +11,13 @@ import ProjectDescriptionHelpers
 let project = Project.makeModule(
   name: "Core",
   product: .framework,
+  packages: [
+    .KeychainAccess,
+    .SpotifyAPI
+  ],
   dependencies: [
+    .SPM.KeychainAccess,
+    .SPM.SpotifyAPI
   ],
   sources: ["Sources/**"]
 )
