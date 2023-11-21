@@ -53,7 +53,7 @@ struct BottomModalView: View {
     .background(Color.settingTextBoxWhite)
   }
   
-  private func listRowView(title: String, description: String?, action: @escaping () -> Void) -> some View {
+  private func listRowView(title: LocalizedStringKey, description: LocalizedStringKey?, action: @escaping () -> Void) -> some View {
     HStack {
       VStack(alignment: .leading, spacing: UIHeight * 0.01) {
         Text(title)
