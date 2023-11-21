@@ -6,16 +6,16 @@
 	<string>development</string>
 	<key>com.apple.developer.icloud-container-identifiers</key>
 	<array>
-		<string>iCloud.seta.cloudKit.creative8</string>
+		<string>iCloud.creative8.Seta</string>
 	</array>
 	<key>com.apple.developer.icloud-services</key>
 	<array>
-		<string>CloudKit</string>
 		<string>CloudDocuments</string>
+		<string>CloudKit</string>
 	</array>
 	<key>com.apple.developer.ubiquity-container-identifiers</key>
 	<array>
-		<string>iCloud.seta.cloudKit.creative8</string>
+		<string>iCloud.creative8.Seta</string>
 	</array>
 	<key>com.apple.security.app-sandbox</key>
 	<true/>

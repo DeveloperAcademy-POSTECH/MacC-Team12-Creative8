@@ -45,7 +45,7 @@ public struct Setlist: Codable {
 }
 
 // MARK: - Artist
-public struct Artist: Codable {
+public struct Artist: Codable, Hashable, Equatable {
   public let mbid: String?
   public let name: String?
   public let sortName: String?
@@ -75,20 +75,32 @@ public struct Sets: Codable {
 }
 
 // MARK: - Session
-public struct Session: Codable {
-  public let song: [Song]?
-  public let encore: Int?
-  public let name: String?
+public struct Session: Codable, Hashable {
+    public let song: [Song]?
+    public let encore: Int?
+    public let name: String?
 
-  public init(song: [Song]?, encore: Int?, name: String?) {
-    self.song = song
-    self.encore = encore
-    self.name = name
-  }
+    public init(song: [Song]?, encore: Int?, name: String?) {
+        self.song = song
+        self.encore = encore
+        self.name = name
+    }
+}
+
+extension Session: Equatable {
+    public static func == (lhs: Session, rhs: Session) -> Bool {
+        return lhs.song == rhs.song &&
+               lhs.encore == rhs.encore &&
+               lhs.name == rhs.name
+    }
 }
 
 // MARK: - Song
-public struct Song: Codable {
+public struct Song: Codable, Hashable, Equatable {
+  public static func == (lhs: Song, rhs: Song) -> Bool {
+    return lhs.name == rhs.name && lhs.info == rhs.info && lhs.cover == rhs.cover && lhs.tape == rhs.tape
+  }
+  
   public let name: String?
   public let info: String?
   public let cover: Artist?

@@ -13,7 +13,7 @@ import UI
 struct ArchiveConcertInfoCell: View {
   @Binding var selectedTab: Tab
 	let info: ArchivedConcertInfo
-	let dataServiece = SetlistDataService.shared
+	let dataServiece = SetlistDataService()
 	@StateObject var dataManager = SwiftDataManager()
 	@Environment(\.modelContext) var modelContext
 

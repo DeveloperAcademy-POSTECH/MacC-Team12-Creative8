@@ -9,9 +9,11 @@
 import Foundation
 
 public final class ArtistDataManager {
-  public static let shared = ArtistDataManager()
+  let dataService = SetlistDataService()
   
-  let dataService: SetlistDataService = SetlistDataService.shared
+  public init() {
+    
+  }
   
   public func getArtistInfo(artistInfo: ArtistInfo, completion: @escaping (ArtistInfo?) -> Void) {
     var parsedSongList: [Titles] = []

@@ -11,9 +11,9 @@ import Core
 import SwiftUI
 
 class ArtistViewModel: ObservableObject {
-  let dataService = SetlistDataService.shared
-  let koreanConverter = KoreanConverter.shared
-  let artistDataManager = ArtistDataManager.shared
+  let dataService = SetlistDataService()
+  let koreanConverter = KoreanConverter()
+  let artistDataManager = ArtistDataManager()
   let swiftDataManager = SwiftDataManager()
   let archivingViewModel = ArchivingViewModel.shared
   

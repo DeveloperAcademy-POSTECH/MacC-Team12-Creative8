@@ -16,6 +16,7 @@ struct ArtistInfoView: View {
   @Query var concertInfo: [ArchivedConcertInfo]
   @Query var likeArtist: [LikeArtist]
   @Environment(\.modelContext) var modelContext
+  @Environment(\.scenePhase) var scenePhase
   
   var body: some View {
     ZStack(alignment: .bottom) {
@@ -32,6 +33,24 @@ struct ArtistInfoView: View {
       vm.swiftDataManager.modelContext = modelContext
       vm.isLikedArtist = vm.swiftDataManager.isAddedLikeArtist(likeArtist, vm.artistInfo.mbid)
     }
+    .onChange(of: scenePhase) {
+                    if scenePhase == .inactive || scenePhase == .background {
+                      if vm.isLikedArtist && !vm.swiftDataManager.isAddedLikeArtist(likeArtist, vm.artistInfo.mbid) { // 뷰를 나갈 때 swiftData에 추가되어있지 않은 상태에서 하트를 눌렀으면
+                        vm.swiftDataManager.addLikeArtist(
+                          name: vm.artistInfo.name,
+                          country: "",
+                          alias: vm.artistInfo.alias ?? "",
+                          mbid: vm.artistInfo.mbid,
+                          gid: vm.artistInfo.gid ?? 0,
+                          imageUrl: vm.artistInfo.imageUrl ?? "",
+                          songList: vm.artistInfo.songList ?? []
+                        )
+                      }
+                      if !vm.isLikedArtist && vm.swiftDataManager.isAddedLikeArtist(likeArtist, vm.artistInfo.mbid) { // 뷰를 나갈 때 swiftData에 추가되어있는 상태에서 하트를 누르지 않았으면
+                        vm.swiftDataManager.findArtistAndDelete(likeArtist, vm.artistInfo.mbid)
+                      }
+                    }
+                }
   }
   
   private var imageLayer: some View {
@@ -66,19 +85,6 @@ struct ArtistInfoView: View {
   
   private var buttonLayer: some View {
     Button {
-      if vm.isLikedArtist {
-        vm.swiftDataManager.findArtistAndDelete(likeArtist, vm.artistInfo.mbid)
-      } else {
-        vm.swiftDataManager.addLikeArtist(
-          name: vm.artistInfo.name,
-          country: "",
-          alias: vm.artistInfo.alias ?? "",
-          mbid: vm.artistInfo.mbid,
-          gid: vm.artistInfo.gid ?? 0,
-          imageUrl: vm.artistInfo.imageUrl ?? "",
-          songList: vm.artistInfo.songList ?? []
-        )
-      }
       vm.isLikedArtist.toggle()
     } label: {
       Circle()
@@ -89,6 +95,22 @@ struct ArtistInfoView: View {
             .foregroundStyle(vm.isLikedArtist ? Color.mainOrange : Color.mainWhite1)
             .font(.title3)
         )
+    }
+    .onDisappear {
+      if vm.isLikedArtist && !vm.swiftDataManager.isAddedLikeArtist(likeArtist, vm.artistInfo.mbid) { // 뷰를 나갈 때 swiftData에 추가되어있지 않은 상태에서 하트를 눌렀으면
+        vm.swiftDataManager.addLikeArtist(
+          name: vm.artistInfo.name,
+          country: "",
+          alias: vm.artistInfo.alias ?? "",
+          mbid: vm.artistInfo.mbid,
+          gid: vm.artistInfo.gid ?? 0,
+          imageUrl: vm.artistInfo.imageUrl ?? "",
+          songList: vm.artistInfo.songList ?? []
+        )
+      }
+      if !vm.isLikedArtist && vm.swiftDataManager.isAddedLikeArtist(likeArtist, vm.artistInfo.mbid) { // 뷰를 나갈 때 swiftData에 추가되어있는 상태에서 하트를 누르지 않았으면
+        vm.swiftDataManager.findArtistAndDelete(likeArtist, vm.artistInfo.mbid)
+      }
     }
   }
 }

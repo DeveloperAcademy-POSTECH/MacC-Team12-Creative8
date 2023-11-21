@@ -22,15 +22,19 @@ struct ArtistImage: View {
         image
           .resizable()
           .scaledToFill()
-          .frame(width: UIWidth * 0.78, height: UIWidth * 0.78)
           .overlay {
             MainView(selectedTab: $selectedTab).artistImageOverlayButton
           }
           .clipShape(RoundedRectangle(cornerRadius: 15))
               .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.mainGrey1, lineWidth: 1))
       } placeholder: {
-        ProgressView()
+        VStack {
+          Spacer()
+          ProgressView()
+          Spacer()
+        }
       }
+      .frame(width: UIWidth * 0.78, height: UIWidth * 0.78)
     }
 }
 

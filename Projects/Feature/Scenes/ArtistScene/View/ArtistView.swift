@@ -22,6 +22,7 @@ struct ArtistView: View {
     VStack {
       if vm.isLoadingArtistInfo || vm.isLoadingSetlist {
         ProgressView()
+          .frame(width: UIWidth, height: UIHeight)
       } else {
         ScrollView {
           ArtistInfoView(vm: vm)
@@ -30,7 +31,6 @@ struct ArtistView: View {
         }
       }
     }
-    .background(Color.backgroundWhite)
     .toolbar { ToolbarItem(placement: .principal) { toolbarArtistName } }
     .onAppear {
       if vm.artistInfo.gid == nil {
@@ -38,6 +38,7 @@ struct ArtistView: View {
         vm.getSetlistsFromSetlistFM(artistMbid: artistMbid)
       }
     }
+    .background(Color.backgroundWhite)
   }
   
   private var toolbarArtistName: some View {

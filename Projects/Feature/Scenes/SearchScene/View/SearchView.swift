@@ -20,17 +20,26 @@ struct SearchView: View {
   @State private var randomIndexes: [Int] = []
   
   var body: some View {
-    Group {
+    VStack(spacing: 0) {
       SearchBar(text: $viewModel.searchText, isEditing: $viewModel.searchIsPresented)
         .padding(.top)
         .padding(.top)
-      ScrollView {
-        artistView
-      }
+        ScrollView {
+          artistView
+        }
+        .scrollDisabled(viewModel.searchIsPresented)
+        .scrollIndicators(.hidden)
+        .overlay {
+          if viewModel.searchIsPresented {
+            ScrollView {
+              searchingHistoryView
+                .padding(.top, 32)
+            }
+            .scrollIndicators(.hidden)
+          }
+        }
     }
     .padding(.horizontal)
-    .scrollDisabled(viewModel.searchIsPresented)
-    .scrollIndicators(.hidden)
     .background(Color.backgroundWhite)
     .onAppear {
       generateRandomIndexes()
@@ -43,13 +52,9 @@ struct SearchView: View {
         .padding(.vertical, 64)
       foreignArtistView
     }
+    .background(Color.backgroundWhite)
     .disabled(viewModel.searchIsPresented)
     .opacity(viewModel.searchIsPresented ? 0 : 1)
-    .overlay { 
-      if viewModel.searchIsPresented {
-        searchingHistoryView
-      }
-    }
   }
   
   private var domesticArtistView: some View {
@@ -86,33 +91,31 @@ struct SearchView: View {
   }
   
   private var searchingHistoryView: some View {
-    ScrollView {
-      VStack {
-        if viewModel.searchText.isEmpty {
-          HStack {
-            Text("최근 검색")
+        VStack {
+          if viewModel.searchText.isEmpty {
+            HStack {
+              Text("최근 검색")
+                .bold()
+                .foregroundStyle(Color.mainBlack)
+              Spacer()
+              Button("모두 지우기") {
+                dataManager.deleteSearchHistoryAll()
+              }
+              .foregroundStyle(Color.mainOrange)
               .bold()
-              .foregroundStyle(Color.mainBlack)
-            Spacer()
-            Button(.init("모두 지우기")) {
-              dataManager.deleteSearchHistoryAll()
             }
-            .foregroundStyle(Color.mainOrange)
-            .bold()
+            ForEach(history, id: \.self) { item in
+              SearchHistoryCell(searchText: $viewModel.searchText, selectedTab: $selectedTab, history: item, dataManager: dataManager)
+            }
+            .toolbar(viewModel.searchIsPresented ? .hidden : .visible, for: .tabBar)
+          } else {
+            SearchArtistList(selectedTab: $selectedTab, viewModel: viewModel)
           }
-          
-          ForEach(history, id: \.self) { item in
-            SearchHistoryCell(searchText: $viewModel.searchText, selectedTab: $selectedTab, history: item, dataManager: dataManager)
-          }
-          .toolbar(viewModel.searchIsPresented ? .hidden : .visible, for: .tabBar)
-        } else {
-          SearchArtistList(selectedTab: $selectedTab, viewModel: viewModel)
         }
+      .onAppear {
+        dataManager.modelContext = modelContext
       }
-      .onAppear { dataManager.modelContext = modelContext }
       .opacity(viewModel.searchIsPresented ? 1 : 0)
       .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-    }
-    .scrollIndicators(.hidden)
   }
 }

@@ -14,9 +14,9 @@ final class SetlistViewModel: ObservableObject {
   @Published var showModal: Bool
   @Published var isLoading: Bool
   
-  let koreanConverter = KoreanConverter.shared
-  let dataService = SetlistDataService.shared
-  let artistDataManager = ArtistDataManager.shared
+  let koreanConverter = KoreanConverter()
+  let dataService = SetlistDataService()
+  let artistDataManager = ArtistDataManager()
   let dataManager = SwiftDataManager()
   
   var setlistSongName: [String] = []

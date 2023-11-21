@@ -13,8 +13,8 @@ import Core
 
 public final class OnboardingViewModel: ObservableObject {
   
-  private let artistDataManager: ArtistDataManager = ArtistDataManager.shared
-  private let dataService: SetlistDataService = SetlistDataService.shared
+  private let artistDataManager = ArtistDataManager()
+  private let dataService = SetlistDataService()
   private var fileName: String
   private var fileType: String
   private var filePath: String?

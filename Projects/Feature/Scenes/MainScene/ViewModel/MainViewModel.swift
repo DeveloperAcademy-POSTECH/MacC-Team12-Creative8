@@ -10,8 +10,8 @@ import SwiftUI
 import Core
 
 final class MainViewModel: ObservableObject {
-  let dataService = SetlistDataService.shared
-  let koreanConverter = KoreanConverter.shared
+  let dataService = SetlistDataService()
+  let koreanConverter = KoreanConverter()
   
   @Published var selectedIndex: Int?
   @Published var scrollToIndex: Int?

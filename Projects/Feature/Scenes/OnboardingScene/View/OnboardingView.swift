@@ -18,8 +18,8 @@ public struct OnboardingView: View {
   @ObservedObject var dataManager = SwiftDataManager()
   @State private var isButtonEnabled = true
   
-  private let artistDataManager: ArtistDataManager = ArtistDataManager.shared
-  private let dataService: SetlistDataService = SetlistDataService.shared
+  private let artistDataManager = ArtistDataManager()
+  private let dataService = SetlistDataService()
   var artistInfo: ArtistInfo?
   @AppStorage("isOnboarding") var isOnboarding: Bool?
   
@@ -126,6 +126,7 @@ public struct OnboardingView: View {
                 .minimumScaleFactor(0.01)
             }
         }
+        .buttonStyle(BasicButtonStyle())
       }
     }
     .padding(.horizontal, 7)
@@ -159,7 +160,6 @@ public struct OnboardingView: View {
             isOnboarding = false
           }
         }
-        
       }, label: {
         RoundedRectangle(cornerRadius: 14)
           .frame(width: 328, height: 54)
@@ -170,8 +170,8 @@ public struct OnboardingView: View {
               .font(.callout)
               .fontWeight(.bold)
           }
-          .padding(EdgeInsets(top: 0, leading: 31, bottom: 32, trailing: 31))
       })
+      .padding(EdgeInsets(top: 0, leading: 31, bottom: 32, trailing: 31))
       .disabled(!isButtonEnabled)
     }
   }
@@ -187,6 +187,12 @@ public struct OnboardingView: View {
           .fontWeight(.bold)
       }
   }
+}
+
+struct BasicButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+      configuration.label
+    }
 }
 
 #Preview {

@@ -17,8 +17,12 @@ struct SearchArtistList: View {
   @Environment(\.modelContext) var modelContext
   var body: some View {
     if viewModel.isLoading {
-      ProgressView()
-        .toolbar(.hidden, for: .tabBar)
+      VStack {
+        Spacer()
+        ProgressView()
+          .toolbar(.hidden, for: .tabBar)
+        Spacer()
+      }
     } else {
       ForEach(viewModel.artistList, id: \.name) { artist in
         let namePair: (String, String?) = viewModel.koreanConverter.findKoreanName(artist: artist)

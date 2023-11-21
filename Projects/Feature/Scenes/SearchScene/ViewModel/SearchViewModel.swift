@@ -11,9 +11,9 @@ import Core
 import Combine
 
 final class SearchViewModel: ObservableObject {
-  let dataService: SetlistDataService = SetlistDataService.shared
-  let artistDataManager: ArtistDataManager = ArtistDataManager.shared
-  let koreanConverter: KoreanConverter = KoreanConverter.shared
+  let dataService = SetlistDataService()
+  let artistDataManager = ArtistDataManager()
+  let koreanConverter = KoreanConverter()
   
   @Published var searchText: String = ""
   @Published var searchIsPresented: Bool = false

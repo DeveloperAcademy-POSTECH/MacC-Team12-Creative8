@@ -17,17 +17,14 @@ struct ListView: View {
   
   var body: some View {
     VStack {
-      ForEach(setlist?.sets?.setsSet ?? [], id: \.name) { session in
+      ForEach(setlist?.sets?.setsSet ?? [], id: \.self) { session in
         VStack(alignment: .leading) {
-          if let sessionName = session.name {
-            Text(sessionName)
+          Text(session.name != nil ? session.name! : session.encore != nil ? "Encore" : "")
               .font(.headline)
               .fontWeight(.bold)
               .foregroundStyle(Color.fontGrey25)
               .padding(.horizontal)
               .padding(.top, 30)
-          }
-          
           let songs = session.song ?? []
           ForEach(Array(songs.enumerated()), id: \.offset) { index, song in
             if let title = song.name {
@@ -97,7 +94,3 @@ private struct ListRowView: View {
     .frame(maxWidth: .infinity, alignment: .leading)
   }
 }
-
-//#Preview {
-//    ListView()
-//}
