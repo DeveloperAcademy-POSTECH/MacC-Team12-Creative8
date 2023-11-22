@@ -26,7 +26,7 @@ public final class AppleMusicService: MusicPlaylistAddable, Sendable {
       // index 순서대로 정렬
       let sortedMusicList = indexedMusicList.sorted { $0.0 < $1.0 }.map { $0.1 }
       
-      let newPlayList = try await MusicLibrary.shared.createPlaylist(name: String(name), description: "Setlist 앱에서 생성된 플레이리스트 입니다.", authorDisplayName: String(venue ?? ""))
+      let newPlayList = try await MusicLibrary.shared.createPlaylist(name: String(name), description: "Seta에서 생성된 플레이리스트 입니다.", authorDisplayName: String(venue ?? ""))
       
       for musicTitle in sortedMusicList {
         // MusicCatalogSearchRequest를 비동기로 처리
