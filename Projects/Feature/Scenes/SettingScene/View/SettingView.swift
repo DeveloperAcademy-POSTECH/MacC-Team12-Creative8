@@ -122,11 +122,11 @@ struct SetlistfmLinkButton: View {
 
 struct LinkLabelView: View {
   
-  var linkLabel: String
+  var linkLabel: LocalizedStringResource
   
   var body: some View {
     HStack {
-      Text(.init(linkLabel))
+      Text(linkLabel)
         .font(.subheadline)
         .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 0))
       Spacer()
