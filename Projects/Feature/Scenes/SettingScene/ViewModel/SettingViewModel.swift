@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 
 class SettingViewModel: ObservableObject {
-  @Published var termsOfService: [String] = [
+  @Published var termsOfService: [LocalizedStringResource] = [
         """
         ‘SETA’는 개인정보보호법에 따라 이용자들의 개인정보 보호 및 권익을 보호하고자 다음과 같은 처리방침을 두고 있습니다. 당사는 개인정보처리방침을 개정하는 경우 화면 공지사항을 통하여 공지할 것입니다.
         """,
@@ -36,7 +36,7 @@ class SettingViewModel: ObservableObject {
         "개인정보 보호책임자 작성 : 본 개인정보처리정책에 대해 궁금하신 사항이 있거나, 개인정보 처리절차에 대한 질문, 의견 또는 우려가 있을 경우 ‘문의하기’를 통해 연락 주시기 바랍니다."
   ]
   
-  @Published var termsOfSelistfmAPI: [String] = [
+  @Published var termsOfSelistfmAPI: [LocalizedStringResource] = [
     "‘SETA’는 Setlist.fm API를 활용하여 공연 정보 및 세트리스트의 데이터를 받아오고 있습니다.\n",
         """
         API 사용 조건으로, Setlist.fm 데이터를 있는 그대로 사용자에게 제공해야 하며 Setlist.fm 데이터가 사용되는 웹사이트 또는 클라이언트 애플리케이션에 귀속을 표시해야 합니다. API를 사용할 때는 각 API 응답에 포함된 어트리뷰션 링크를 사용해야 합니다.\n
