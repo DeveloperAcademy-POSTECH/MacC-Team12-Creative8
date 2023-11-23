@@ -75,20 +75,20 @@ public struct SettingView: View {
 
 struct SectionTitleView: View {
   
-  var sectionTitle: String
-  var sectionTopDescription: String
-  var sectionBottomDescription: String
+  var sectionTitle: LocalizedStringResource
+  var sectionTopDescription: LocalizedStringResource
+  var sectionBottomDescription: LocalizedStringResource
   
   var body: some View {
     VStack(alignment: .leading) {
-      Text(.init(sectionTitle))
+      Text(sectionTitle)
         .font(.headline)
         .foregroundStyle(Color.mainBlack)
         .padding(.vertical)
       Group {
         VStack(alignment: .leading) {
-          Text(.init(sectionTopDescription))
-          Text(.init(sectionBottomDescription))
+          Text(sectionTopDescription)
+          Text(sectionBottomDescription)
         }
       }
       .font(.footnote)

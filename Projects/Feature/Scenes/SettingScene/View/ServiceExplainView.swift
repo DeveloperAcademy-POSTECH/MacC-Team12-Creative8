@@ -74,11 +74,11 @@ struct TermsOfSetlistfm: View {
 
 struct TermsTitleView: View {
   
-  var title: String
+  var title: LocalizedStringResource
   
   var body: some View {
     VStack(alignment: .leading) {
-      Text(.init(title))
+      Text(title)
         .font(.system(.callout, weight: .bold))
         .foregroundStyle(Color.mainBlack)
       Divider()
@@ -91,19 +91,19 @@ struct TermsView: View {
   
   @ObservedObject var viewModel = SettingViewModel()
   
-  var terms: [String]
+  var terms: [LocalizedStringResource]
   var bulletPoint: String
   
   var body: some View {
     VStack(alignment: .leading) {
-      Text(.init(terms[0]))
+      Text(terms[0])
         .font(.footnote)
         .fixedSize(horizontal: false, vertical: true)
         .padding(.top, 16)
       ForEach(1..<terms.count, id: \.self) { index in
         HStack(alignment: .top) {
           Text(bulletPoint == "•" ? bulletPoint : "\(index).")
-          Text(.init(terms[index]))
+          Text(terms[index])
             .lineLimit(nil)
             .fixedSize(horizontal: false, vertical: true)
             .padding(.bottom)
