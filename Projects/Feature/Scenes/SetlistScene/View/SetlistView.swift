@@ -22,6 +22,10 @@ struct SetlistView: View {
   @Environment(\.modelContext) var modelContext
   @State private var showToastMessage = false
   
+//  @State private var showToastMessageAppleMusic = false
+//  @State private var showToastMessageCapture = false
+  @StateObject var exportViewModel = ExportPlaylistViewModel()
+  
   var body: some View {
     ZStack {
       Color.backgroundWhite
@@ -36,7 +40,12 @@ struct SetlistView: View {
       }
       if let setlist = setlist {
         if !vm.isEmptySetlist(setlist) {
-          ExportPlaylistButtonView(setlist: setlist, artistInfo: artistInfo, vm: vm)
+          ExportPlaylistButtonView(setlist: setlist,
+                                   artistInfo: artistInfo,
+                                   vm: vm,
+                                   showToastMessageAppleMusic: $exportViewModel.showToastMessageAppleMusic,
+                                   showToastMessageCapture: $exportViewModel.showToastMessageCapture,
+                                   exportViewModel: exportViewModel)
         }
       }
       if showToastMessage {
@@ -48,7 +57,32 @@ struct SetlistView: View {
         }
       }
     }
+    .customAlert(primaryButton: CustomAlertButton(title: "확인", action: {
+      let musicList = vm.setlistSongName
+      exportViewModel.addToAppleMusic(musicList: musicList, setlist: setlist)
+    }), dismissButton: CustomAlertButton(title: "취소", action: {
+      vm.showModal.toggle()
+      exportViewModel.showAppleMusicAlert.toggle()
+    }),
+       isPresented: $exportViewModel.showAppleMusicAlert,
+       artistInfo: artistInfo,
+       setlist: setlist,
+       exportViewModel: exportViewModel
+    )
+    .customAlert(primaryButton: CustomAlertButton(title: "확인", action: {
+      // TODO: 유튜브뮤직
+      vm.showModal.toggle()
+    }), dismissButton: CustomAlertButton(title: "취소", action: {
+      vm.showModal.toggle()
+      exportViewModel.showAppleMusicAlert.toggle()
+    }),
+     isPresented: $exportViewModel.showYouTubeAlert,
+     artistInfo: artistInfo,
+     setlist: setlist,
+     exportViewModel: exportViewModel
+    )
     .toolbar(.hidden, for: .tabBar)
+    .navigationBarTitleDisplayMode(.inline)
     .background(Color.backgroundWhite)
     .edgesIgnoringSafeArea(.bottom)
     .onAppear {
@@ -82,7 +116,6 @@ struct SetlistView: View {
         }
       }
     }
-    
   }
   
   private var concertInfoArea: some View {
@@ -93,7 +126,7 @@ struct SetlistView: View {
         .ignoresSafeArea()
       ConcertInfoView(
         artist: artistInfo.name,
-        date: vm.getFormattedDateFromString(date: setlist?.eventDate ?? "", format: "yyyy년 MM월 dd일") ?? "-",
+        date: vm.allDateFormatter(inputDate: setlist?.eventDate ?? "") ?? "-",
         venue: setlist?.venue?.name ?? "-",
         tour: setlist?.tour?.name ?? "-"
       )
@@ -121,11 +154,9 @@ struct SetlistView: View {
           EmptySetlistView()
             .padding(30)
         } else {
-          VStack {
-            ListView(setlist: setlist, artistInfo: artistInfo, vm: vm)
-              .padding(30)
-            BottomView()
-          }
+          ListView(setlist: setlist, artistInfo: artistInfo, vm: vm)
+            .padding(30)
+            .padding(.bottom, 130)
         }
       }
     }
@@ -167,5 +198,24 @@ struct SetlistView: View {
     DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
       showToastMessage = false
     }
+  }
+}
+
+extension View {
+  func customAlert( primaryButton: CustomAlertButton, dismissButton: CustomAlertButton,
+                    isPresented: Binding<Bool>,
+                    artistInfo: ArtistInfo,
+                    setlist: Setlist?,
+                    exportViewModel: ExportPlaylistViewModel
+  ) -> some View {
+    return modifier(CustomAlertModifier(dismissButton: dismissButton,
+                                        primaryButton: primaryButton,
+                                        isPresented: isPresented,
+                                        artistInfo: artistInfo,
+                                        setlist: setlist,
+                                        exportViewModel: exportViewModel
+                                       )
+    )
+    
   }
 }

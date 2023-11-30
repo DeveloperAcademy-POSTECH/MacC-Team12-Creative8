@@ -17,40 +17,67 @@ struct SearchView: View {
   @StateObject var viewModel = SearchViewModel()
   @Environment (\.modelContext) var modelContext
   @StateObject var dataManager = SwiftDataManager()
-  @State private var randomIndexes: [Int] = []
+  @StateObject var tabViewManager: TabViewManager
+  @Namespace var topID
   
   var body: some View {
-    VStack(spacing: 0) {
-      SearchBar(text: $viewModel.searchText, isEditing: $viewModel.searchIsPresented)
-        .padding(.top)
-        .padding(.top)
-        ScrollView {
-          artistView
-        }
-        .scrollDisabled(viewModel.searchIsPresented)
-        .scrollIndicators(.hidden)
-        .overlay {
-          if viewModel.searchIsPresented {
+    NavigationStack(path: $tabViewManager.pageStack) {
+      VStack(spacing: 0) {
+        SearchBar(text: $viewModel.searchText, isEditing: $viewModel.searchIsPresented)
+          .padding(.top)
+          .padding(.top)
+          ScrollViewReader { proxy in
             ScrollView {
-              searchingHistoryView
-                .padding(.top, 32)
+//              searchingHistoryView
+//                .padding(.top, 12)
+
+              Spacer().id(topID)
+              artistView
             }
-            .scrollIndicators(.hidden)
+            .onReceive(tabViewManager.$scrollToTop) { _ in
+              withAnimation {
+                proxy.scrollTo(topID)
+              }
+
+            }
           }
+          .scrollDisabled(viewModel.searchIsPresented)
+          .scrollIndicators(.hidden)
+          .overlay {
+            if viewModel.searchIsPresented {
+              ScrollView {
+                searchingHistoryView
+                  .padding(.top, 12)
+              }
+              .scrollIndicators(.hidden)
+            }
+          }
+      }
+      .padding(.horizontal)
+      .background(Color.backgroundWhite)
+      .navigationDestination(for: NavigationDelivery.self) { value in
+        if value.setlistId != nil {
+          SetlistView(setlistId: value.setlistId, artistInfo: ArtistInfo(
+            name: value.artistInfo.name,
+            alias: value.artistInfo.alias,
+            mbid: value.artistInfo.mbid,
+            gid: value.artistInfo.gid,
+            imageUrl: value.artistInfo.imageUrl,
+            songList: value.artistInfo.songList))
+        } else {
+          ArtistView(selectedTab: $selectedTab, artistName: value.artistInfo.name, artistAlias: value.artistInfo.alias, artistMbid: value.artistInfo.mbid)
         }
-    }
-    .padding(.horizontal)
-    .background(Color.backgroundWhite)
-    .onAppear {
-      generateRandomIndexes()
+      }
     }
   }
   
   private var artistView: some View {
     VStack(alignment: .leading) {
       domesticArtistView
-        .padding(.vertical, 64)
+        .padding(.top, 44)
+        .padding(.bottom, 64)
       foreignArtistView
+        .padding(.bottom, 48)
     }
     .background(Color.backgroundWhite)
     .disabled(viewModel.searchIsPresented)
@@ -62,10 +89,8 @@ struct SearchView: View {
       Text("국내 아티스트").bold()
         .foregroundStyle(Color.mainBlack)
       LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 15) {
-        ForEach(randomIndexes, id: \.self) { index in
-          if let imageURL = koreanArtistModel[index].imageUrl {
-            SearchArtistCell(selectedTab: $selectedTab, imageURL: imageURL, artistName: koreanArtistModel[safe: index]?.name ?? "", artistMbid: koreanArtistModel[safe: index]?.mbid ?? "")
-          }
+        ForEach(viewModel.domesticArtists, id: \.self) { item in
+          SearchArtistCell(selectedTab: $selectedTab, imageURL: item.url ?? "", artistName: item.name, artistAlias: item.alias, artistMbid: item.mbid, artistGid: item.gid)
         }
       }
     }
@@ -76,18 +101,11 @@ struct SearchView: View {
       Text("해외 아티스트").bold()
         .foregroundStyle(Color.mainBlack)
       LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 15) {
-        ForEach(randomIndexes, id: \.self) { index in
-          if let imageURL = foreignArtistModel[index].imageUrl {
-            SearchArtistCell(selectedTab: $selectedTab, imageURL: imageURL, artistName: foreignArtistModel[safe: index]?.name ?? "", artistMbid: foreignArtistModel[safe: index]?.mbid ?? "")
-          }
+        ForEach(viewModel.foreignArtists, id: \.self) { item in
+          SearchArtistCell(selectedTab: $selectedTab, imageURL: item.url ?? "", artistName: item.name, artistAlias: item.alias, artistMbid: item.mbid, artistGid: item.gid)
         }
       }
     }
-  }
-  
-  private func generateRandomIndexes() {
-    let count = 9
-    randomIndexes = Array(koreanArtistModel.indices.shuffled().prefix(count))
   }
   
   private var searchingHistoryView: some View {
@@ -98,11 +116,13 @@ struct SearchView: View {
                 .bold()
                 .foregroundStyle(Color.mainBlack)
               Spacer()
-              Button("모두 지우기") {
+              Button {
                 dataManager.deleteSearchHistoryAll()
+              } label: {
+                Text("모두 지우기")
+                  .foregroundStyle(Color.mainOrange)
+                  .bold()
               }
-              .foregroundStyle(Color.mainOrange)
-              .bold()
             }
             ForEach(history, id: \.self) { item in
               SearchHistoryCell(searchText: $viewModel.searchText, selectedTab: $selectedTab, history: item, dataManager: dataManager)

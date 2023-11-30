@@ -17,13 +17,12 @@ struct BookmarkedSetlistsView: View {
   @State var bookmarkedSetlists: [ArchivedConcertInfo] = []
   @Environment(\.dismiss) var dismiss
   @Binding var selectedTab: Tab
+  @State var showBookmarkedSetlists: Bool = false
   
   var body: some View {
     VStack {
       titleLayer
-        .padding()
-      
-      if vm.showBookmarkedSetlists {
+      if showBookmarkedSetlists {
         VStack {
           if bookmarkedSetlists.isEmpty {
             emptyLayer
@@ -41,12 +40,11 @@ struct BookmarkedSetlistsView: View {
         )
         .padding(.horizontal)
       }
-      
     }
     .onAppear {
       getBookmarkedSetlists()
       if !bookmarkedSetlists.isEmpty {
-        vm.showBookmarkedSetlists = true
+          showBookmarkedSetlists = true
       }
     }
   }
@@ -67,15 +65,17 @@ struct BookmarkedSetlistsView: View {
         .fontWeight(.bold)
       Spacer()
       Button {
-        vm.showBookmarkedSetlists.toggle()
+//        withAnimation(Animation.spring()) { // MARK: 애니메이션 넣을까요 말까요?
+          showBookmarkedSetlists.toggle()
+//        }
       } label: {
-        Image(systemName: vm.showBookmarkedSetlists ? "chevron.down" : "chevron.right")
-          .font(.title3)
+        Image(systemName: "chevron.right")
+          .rotationEffect(.degrees(showBookmarkedSetlists ? 90 : 0))
+            .font(.title3)
       }
       .foregroundStyle(Color.mainBlack)
     }
-    .padding(.leading, 10)
-    .padding(.trailing, 20)
+    .padding(EdgeInsets(top: 20, leading: 24, bottom: 24, trailing: 24))
   }
   
   private var emptyLayer: some View {
@@ -148,6 +148,8 @@ struct BookmarkedSetlistsView: View {
           Image(systemName: "ellipsis")
             .foregroundStyle(Color.mainBlack)
             .font(.title3)
+            .padding()
+            .background(Color.clear)
         }
         
         Spacer()
@@ -172,8 +174,11 @@ struct BookmarkedSetlistsView: View {
     } label: {
       HStack {
         Spacer()
-        Text("\(vm.artistInfo.name) 보관함에서 보기")
-          .underline()
+        Group {
+          Text("\(vm.artistInfo.name) 보관함에서 보기")
+            .multilineTextAlignment(.trailing)
+          Image(systemName: "arrow.right")
+        }
       }
       .font(.subheadline)
       .foregroundColor(Color.mainBlack)

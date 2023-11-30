@@ -14,7 +14,7 @@ struct SetlistFMLinkButtonView: View {
     VStack {
       if let url = URL(string: "https://www.setlist.fm") {
         Link(destination: url) {
-          Text("Setlist.fm 바로가기")
+          Text("세트리스트 추가하기")
             .foregroundStyle(Color.mainBlack)
             .font(.callout)
             .fontWeight(.semibold)

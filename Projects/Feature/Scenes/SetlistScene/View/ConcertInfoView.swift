@@ -37,7 +37,7 @@ struct ConcertInfoView: View {
 }
 
 struct InfoComponent: View {
-  let text1: String
+  let text1: LocalizedStringResource
   let text2: String
   
   var body: some View {

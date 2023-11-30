@@ -13,15 +13,22 @@ public final class KoreanConverter {
     
   }
   
+  public func isKorean() -> Bool {
+    guard let languageCode = Locale.current.language.languageCode?.identifier else { return false }
+      return languageCode == "ko"
+  }
+  
   public func findKoreanName(artist: MusicBrainzArtist) -> (String, String?) {
     var primaryAlias: String?
     
     guard let aliases = artist.aliases else { return (artist.name!, nil) }
     
-    for alias in aliases {
-      if ((alias.locale == "ko" || alias.locale == "ko_KR") && (alias.name?.lowercased() != artist.name?.lowercased())) {
-        primaryAlias = alias.name
-        return (artist.name!, primaryAlias)
+    if self.isKorean() {
+      for alias in aliases {
+        if ((alias.locale == "ko" || alias.locale == "ko_KR") && (alias.name?.lowercased() != artist.name?.lowercased())) {
+          primaryAlias = alias.name
+          return (artist.name!, primaryAlias)
+        }
       }
     }
     

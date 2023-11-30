@@ -11,12 +11,11 @@ import Core
 import UI
 
 public struct OnboardingView: View {
-  
   @ObservedObject var onboardingViewModel = OnboardingViewModel()
+  @ObservedObject var artistFetchService = ArtistFetchService()
   @ObservedObject var artistViewModel = ArtistViewModel()
   @Environment(\.modelContext) var modelContext
   @ObservedObject var dataManager = SwiftDataManager()
-  @State private var isButtonEnabled = true
   
   private let artistDataManager = ArtistDataManager()
   private let dataService = SetlistDataService()
@@ -32,7 +31,7 @@ public struct OnboardingView: View {
         ScrollView(showsIndicators: false) {
           VStack(alignment: .leading) {
             onboardingTitle
-//            genresFilterButton
+            genresFilterButton
             artistNameButton
           }
         }
@@ -54,8 +53,11 @@ public struct OnboardingView: View {
     }
     .onAppear {
       dataManager.modelContext = modelContext
-      onboardingViewModel.readXslx()
-      onboardingViewModel.updateFilteredModels()
+      artistFetchService.fetchData { success in
+          if !success {
+            onboardingViewModel.artistFetchError.toggle()
+          }
+      }
     }
   }
   
@@ -66,10 +68,12 @@ public struct OnboardingView: View {
         .font(.system(.headline))
         .foregroundStyle(Color.mainBlack)
       Spacer().frame(height: 16)
-      Text("찜한 아티스트 중 최대 5명까지 메인화면에 나옵니다.\n메인 화면에 없는 아티스트는 보관함에서 확인해주세요.")
-        .font(.system(.footnote))
-        .foregroundStyle(Color.fontGrey2)
-        .opacity(0.8)
+      Group {
+        Text("관심 있는 아티스트의 세트리스트 정보를")
+        Text("메인 화면에서 바로 확인할 수 있어요")
+      }
+      .font(.system(.footnote))
+      .foregroundStyle(Color.fontGrey2)
       Spacer().frame(height: 48)
     }
     .padding(.leading, 24)
@@ -81,7 +85,6 @@ public struct OnboardingView: View {
         ForEach(OnboardingFilterType.allCases, id: \.self) { buttonType in
           Button {
             onboardingViewModel.selectedGenere = buttonType
-            onboardingViewModel.updateFilteredModels()
           } label: {
             Text(buttonType.rawValue)
               .font(.system(.subheadline))
@@ -92,26 +95,50 @@ public struct OnboardingView: View {
           }
         }
       }
-      .padding(.leading, 24)
+      .padding(.horizontal, 24)
       .padding(.bottom, 30)
     }
   }
-  
+
+  private var artistListView: some View {
+    Group {
+      if onboardingViewModel.artistFetchError {
+      } else {
+        artistNameButton
+      }
+    }
+  }
+
   private var artistNameButton: some View {
     LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3)) {
-      ForEach(onboardingViewModel.filteredArtist.indices, id: \.self) { index in
+      ForEach(artistFetchService.allArtist.filter { artist in
+        if onboardingViewModel.selectedGenere == .all { return true }
+          if let tags = artist.tags, tags.contains(onboardingViewModel.findFilterTagName(onboardingViewModel.selectedGenere)) {
+            return true
+          }
+          return false
+      }, id: \.self) { item in
         Button {
-          onboardingViewModel.artistSelectionAction(at: index)
+          if let index = onboardingViewModel.selectedArtist.firstIndex(of: item) {
+              onboardingViewModel.selectedArtist.remove(at: index)
+          } else {
+            if onboardingViewModel.selectedArtist.count < 5 {
+              onboardingViewModel.selectedArtist.insert(item, at: 0)
+            } else {
+              onboardingViewModel.isShowToastBar.toggle()
+            }
+          }
         } label: {
           Rectangle()
             .frame(width: 125, height: 68)
             .foregroundStyle(.clear)
             .overlay {
-              Text(onboardingViewModel.filteredArtist[index].name)
-                .frame(width: 100, height: 48)
-                .font(.system(.largeTitle, weight: .semibold))
-                .foregroundColor(onboardingViewModel.selectedArtist.contains(where: { $0.id == onboardingViewModel.filteredArtist[index].id }) ? .mainBlack : .fontGrey3)
-                .minimumScaleFactor(0.01)
+              Text(item.name)
+                .multilineTextAlignment(.center)
+                .frame(width: 110, height: 48)          .font(.system(.largeTitle, weight: .semibold))
+                .foregroundColor(onboardingViewModel.selectedArtist.contains(item) ? .mainBlack : .fontGrey3)
+                .minimumScaleFactor(0.1)
+                .padding(10)
             }
         }
         .buttonStyle(BasicButtonStyle())
@@ -123,44 +150,30 @@ public struct OnboardingView: View {
   private var bottomButton: some View {
     ZStack {
       Button(action: {
-        if onboardingViewModel.artistSelectedCount < 3 {
+        let artists = onboardingViewModel.selectedArtist.count
+        if artists < 1 {
           onboardingViewModel.isShowToastBar.toggle()
         } else {
-          isButtonEnabled = false
-          for index in 0..<onboardingViewModel.selectedArtist.count {
-            if self.artistInfo == nil {
-              onboardingViewModel.getArtistInfo(
-                artistName: onboardingViewModel.selectedArtist[index].name,
-                artistMbid: onboardingViewModel.selectedArtist[index].mbid) { result in
-                  if let result = result {
-                    dataManager.addLikeArtist(name: result.name,
-                                              country: "",
-                                              alias: result.alias ?? "",
-                                              mbid: result.mbid,
-                                              gid: result.gid ?? 0,
-                                              imageUrl: result.imageUrl,
-                                              songList: [])
-                }
-              }
-            }
+          for item in onboardingViewModel.selectedArtist {
+            dataManager.addLikeArtist(name: item.name, country: item.country, alias: item.alias, mbid: item.mbid, gid: item.gid, imageUrl: item.url, songList: [])
           }
-          DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
             isOnboarding = false
-          }
         }
       }, label: {
         RoundedRectangle(cornerRadius: 14)
           .frame(width: 328, height: 54)
-          .foregroundColor(onboardingViewModel.artistSelectedCount < 3 ? .mainGrey1 : .mainBlack)
+          .foregroundColor(onboardingViewModel.selectedArtist.count < 1 ? .mainGrey1 : .mainBlack)
           .overlay {
-            Text(onboardingViewModel.artistSelectedCount == 0 ? "최소 3명 이상 선택" : "\(onboardingViewModel.artistSelectedCount)명 선택")
-              .foregroundStyle(onboardingViewModel.artistSelectedCount < 3 ? Color.mainBlack : Color.settingTextBoxWhite)
+            Group {
+              onboardingViewModel.selectedArtist.count == 0 ? Text("5명까지 선택할 수 있습니다") : Text("\(Int(onboardingViewModel.selectedArtist.count))명 선택")
+
+            }
+              .foregroundStyle(onboardingViewModel.selectedArtist.count < 1 ? Color.mainBlack : Color.settingTextBoxWhite)
               .font(.callout)
               .fontWeight(.bold)
           }
       })
       .padding(EdgeInsets(top: 0, leading: 31, bottom: 32, trailing: 31))
-      .disabled(!isButtonEnabled)
     }
   }
   
@@ -169,8 +182,10 @@ public struct OnboardingView: View {
       .frame(width: 328, height: 44)
       .foregroundColor(.toastBurn)
       .overlay {
-        Text("아직 아티스트 3명이 선택되지 않았어요.")
-          .foregroundStyle(Color.settingTextBoxWhite)
+        Group {
+          onboardingViewModel.selectedArtist.count > 0 ? Text("아티스트 5명이 이미 선택되었어요") : Text("아티스트를 최대 5명까지 선택해주세요")
+        }
+        .foregroundStyle(Color.settingTextBoxWhite)
           .font(.subheadline)
           .fontWeight(.bold)
       }

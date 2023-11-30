@@ -51,9 +51,6 @@ struct ListView: View {
               if index + 1 < songs.count {
                 Divider()
               }
-              
-              let _ = vm.addElementToArray(title: title, songList: artistInfo?.songList ?? [])
-              
             }
           }
         }

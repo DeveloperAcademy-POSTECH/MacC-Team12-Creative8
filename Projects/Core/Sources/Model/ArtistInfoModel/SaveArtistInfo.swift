@@ -9,7 +9,7 @@
 import Foundation
 import SwiftData
 
-public struct SaveArtistInfo: Codable {
+public struct SaveArtistInfo: Codable, Hashable {
   public var name: String
   public var country: String
   public var alias: String
@@ -29,7 +29,7 @@ public struct SaveArtistInfo: Codable {
   }
 }
 
-public struct Titles: Codable {
+public struct Titles: Codable, Hashable {
   public var title: String
   public var subTitle: String
 

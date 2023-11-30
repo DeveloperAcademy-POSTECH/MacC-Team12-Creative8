@@ -19,11 +19,13 @@ struct EmptySetlistView: View {
         .padding(.bottom)
         .padding(.top, 100)
       
-      Text("세트리스트를 직접 작성하고 싶으신가요?\nSetlist.fm 바로가기에서 추가하세요")
-        .foregroundStyle(Color.fontGrey2)
-        .font(.footnote)
-        .multilineTextAlignment(.center)
-      
+      Group {
+        Text("세트리스트를 직접 작성하고 싶으신가요?")
+        Text("Setlist.fm에서 추가해보세요.")
+      }
+      .foregroundStyle(Color.fontGrey2)
+      .font(.footnote)
+      .multilineTextAlignment(.center)
       SetlistFMLinkButtonView()
         .padding(.top, 100)
     }

@@ -18,17 +18,12 @@ public struct SettingView: View {
       Color.backgroundWhite
       ScrollView {
         VStack(alignment: .leading) {
-          Text("더보기").font(.title2).fontWeight(.semibold).foregroundStyle(Color.mainBlack)
-            .padding(.top, 23)
-          Divider()
-            .foregroundStyle(Color.lineGrey1)
-            .padding(.top, 7)
-            .padding(.trailing, -25)
+          
           // 세트리스트 추가 및 수정하기
           VStack(alignment: .leading) {
             SectionTitleView(
               sectionTitle: "세트리스트 추가 및 수정하기",
-              sectionDescription: "Setlist.fm에서 다녀온 공연의 세트리스트를\n추가 및 수정하세요")
+              sectionTopDescription: "Setlist.fm에서 다녀온 공연의 세트리스트를", sectionBottomDescription: "추가 및 수정하세요")
             SetlistfmLinkButton(
               setlistfmURL: "https://www.setlist.fm",
               linkLabel: "Setlist.fm 바로가기")
@@ -41,42 +36,47 @@ public struct SettingView: View {
               .foregroundStyle(Color.lineGrey1)
             SectionTitleView(
               sectionTitle: "서비스 이용 관련",
-              sectionDescription: "음악으로 연결되는 순간,\nSeta의 서비스 약관을 확인해보세요")
-            // 이용 약관
-            NavigationLink {
-              ServiceExplainView()
-                .navigationBarTitleDisplayMode(.inline)
-            } label: {
-              LinkLabelView(linkLabel: "이용 약관")
-            }
+              sectionTopDescription: "음악으로 연결되는 순간,", sectionBottomDescription: "Seta의 서비스 약관을 확인해보세요")
+            
+            // FAQ
+            Link(destination: URL(string: "https://inquisitive-digit-cfe.notion.site/FAQ-10f7d0c94c104015b5719ab2a26f2cf2?pvs=4")!, label: {
+              LinkLabelView(linkLabel: "FAQ")
+            })
             Divider()
               .foregroundStyle(Color.lineGrey1)
-
-            // Setlist.fm 약관
-            NavigationLink {
-              TermsOfSetlistfm()
-                .navigationBarTitleDisplayMode(.inline)
-            } label: {
-              LinkLabelView(linkLabel: "Setlist.fm 약관")
-            }
-            Divider()
-              .foregroundStyle(Color.lineGrey1)
-
+            
             // 문의하기
             AskView()
+            Divider()
+              .foregroundStyle(Color.lineGrey1)
+            
+            // 이용 약관
+            Link(destination: URL(string: "https://inquisitive-digit-cfe.notion.site/3b69b21a1afc4306bcccde7019d6379d?pvs=4")!, label: {
+              LinkLabelView(linkLabel: "이용 약관")
+            })
+            Divider()
+              .foregroundStyle(Color.lineGrey1)
+
+            // 개인정보 처리방침
+            Link(destination: URL(string: "https://inquisitive-digit-cfe.notion.site/1d16107bb0f34e629bcbd30a25ceb5d0?pvs=4")!, label: {
+              LinkLabelView(linkLabel: "개인정보 처리방침")
+            })
           }
         }
         .padding(.horizontal, 25)
         .padding(.vertical)
       }
+      .scrollIndicators(.hidden)
     }
+    .navigationTitle("더보기")
   }
 }
 
 struct SectionTitleView: View {
   
-  var sectionTitle: String
-  var sectionDescription: String
+  var sectionTitle: LocalizedStringResource
+  var sectionTopDescription: LocalizedStringResource
+  var sectionBottomDescription: LocalizedStringResource
   
   var body: some View {
     VStack(alignment: .leading) {
@@ -84,7 +84,10 @@ struct SectionTitleView: View {
         .font(.headline)
         .foregroundStyle(Color.mainBlack)
         .padding(.vertical)
-      Text(sectionDescription)
+      VStack(alignment: .leading, spacing: 0) {
+        Text(sectionTopDescription)
+        Text(sectionBottomDescription)
+      }
         .font(.footnote)
         .foregroundStyle(Color.fontGrey2)
         .padding(.bottom, 30)
@@ -95,7 +98,7 @@ struct SectionTitleView: View {
 struct SetlistfmLinkButton: View {
   
   var setlistfmURL: String
-  var linkLabel: String
+  var linkLabel: LocalizedStringResource
   
   var body: some View {
     Link(destination: URL(string: setlistfmURL)!, label: {
@@ -116,7 +119,7 @@ struct SetlistfmLinkButton: View {
 
 struct LinkLabelView: View {
   
-  var linkLabel: String
+  var linkLabel: LocalizedStringResource
   
   var body: some View {
     HStack {

@@ -17,7 +17,9 @@ struct MenuButton: View {
   @Environment(\.modelContext) var modelContext
   var body: some View {
     Menu {
-      NavigationLink("아티스트 보기") { ArtistView(selectedTab: $selectedTab, artistName: item.artistInfo.name, artistAlias: item.artistInfo.alias, artistMbid: item.artistInfo.mbid) }
+      NavigationLink(value: NavigationDelivery(artistInfo: SaveArtistInfo(name: item.artistInfo.name, country: "", alias: item.artistInfo.alias, mbid: item.artistInfo.mbid, gid: 0, imageUrl: "", songList: []))) {
+        Text("아티스트 보기")
+      }
       Button("찜하기 취소") { dataManager.deleteLikeArtist(item) }
     } label: {
       Image(systemName: "ellipsis")

@@ -10,19 +10,34 @@ import SwiftUI
 import UI
 
 struct ArtistSetCell: View {
-	let name: String
-	let isSelected: Bool
-	var body: some View {
-		Text(name)
-			.foregroundStyle(isSelected ? Color.settingTextBoxWhite : Color.fontGrey2)
-			.padding(12)
-			.background {
-				let color = isSelected ? Color.mainBlack : Color.mainGrey1
-				color.clipShape(RoundedRectangle(cornerRadius: 12))
-			}
-	}
-}
+   let name: String
+   let isSelected: Bool
+   var body: some View {
+     Text(name)
+       .foregroundStyle(isSelected ? Color.settingTextBoxWhite : Color.fontGrey2)
+       .padding(10)
+       .background {
+         let color = isSelected ? Color.mainBlack : Color.mainGrey1
+         color.clipShape(RoundedRectangle(cornerRadius: 12))
+       }
+       .font(.subheadline)
+   }
+ }
 
-#Preview {
-	ArtistSetCell(name: "방탄소년단", isSelected: false)
-}
+struct AllArtistsSetCell: View {
+   let name: LocalizedStringResource
+   let isSelected: Bool
+   var body: some View {
+     Text(name)
+       .foregroundStyle(isSelected ? Color.settingTextBoxWhite : Color.fontGrey2)
+       .padding(10)
+       .background {
+         let color = isSelected ? Color.mainBlack : Color.mainGrey1
+         color.clipShape(RoundedRectangle(cornerRadius: 12))
+       }
+   }
+ }
+
+ #Preview {
+   ArtistSetCell(name: "방탄소년단", isSelected: false)
+ }

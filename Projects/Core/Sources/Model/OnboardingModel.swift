@@ -8,27 +8,25 @@
 
 import Foundation
 
-public struct OnboardingModel: Identifiable {
-  public var id = UUID()
-  public var name: String
-  public var genius: Int
-  public var mbid: String
-  public var filter: String
-  
-  public init(name: String, genius: Int, mbid: String, filter: String) {
-    self.name = name
-    self.genius = genius
-    self.mbid = mbid
-    self.filter = filter
-  }
+public struct OnboardingModel: Decodable, Hashable {
+    public var name: String
+    public var mbid: String
+    public var alias: String
+    public var url: String?
+    public var gid: Int
+    public var country: String
+    public var tags: [String]?
 }
 
-public enum OnboardingFilterType: String, CaseIterable {
-  case all = "전체"
-  case kpop = "케이팝"
-  case hiphop = "힙합"
-  case band = "밴드"
-  case indie = "인디"
-  case ballad = "발라드"
-  case pop = "해외가수"
+public enum OnboardingFilterType: LocalizedStringResource, CaseIterable {
+  case all = "전체"  // 전체
+  case kpop = "케이팝"  // 케이팝
+  case pop = "팝"  // 팝
+  case hiphop = "힙합"  // 힙합
+  case rnb = "알앤비"  // 알앤비
+  case rock = "락"  // 락
+  case metal = "메탈"  // 메탈
+  case elctronic = "일렉트로닉"  // 일렉트로닉
+  case folk = "포크"  // 포크
+  case jpop = "제이팝"  // 제이팝
 }

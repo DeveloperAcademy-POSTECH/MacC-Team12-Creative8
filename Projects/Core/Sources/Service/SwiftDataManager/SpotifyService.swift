@@ -186,17 +186,14 @@ public class SpotifyService: ObservableObject {
     
   }
   
-  public func performPlaylistCreation(artistName: String?, eventDate: String?, songList: [String]) {
+  public func performPlaylistCreation(artistName: String?, eventDate: String?, songList: [(String, String?)]) {
     var trackUris: [String] = []
     var playlistUri: String = ""
     
     func searchTracks() -> AnyPublisher<Void, Error> {
-      let artistName = artistName ?? ""
-      let songList = songList
-      
       return Publishers.Sequence(sequence: songList)
         .flatMap(maxPublishers: .max(1)) { song -> AnyPublisher<String?, Never> in
-          let query = "\(artistName) \(song)"
+          let query = "\(song.1 ?? "") \(song.0)"
           print("@LOG query: \(query)")
           let categories: [IDCategory] = [.artist, .track]
           

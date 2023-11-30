@@ -10,7 +10,7 @@ import SwiftUI
 import UI
 
 struct ToastMessageView: View {
-  let message: String
+  let message: LocalizedStringResource
   
   var body: some View {
      Text(message)

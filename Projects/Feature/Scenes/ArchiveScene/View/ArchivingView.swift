@@ -10,36 +10,50 @@ import SwiftUI
 import SwiftData
 import Core
 import UI
+import Combine
 
 struct ArchivingView: View {
   @Binding var selectedTab: Tab
   @Query(sort: \LikeArtist.orderIndex, order: .reverse) var likeArtists: [LikeArtist]
   @Query(sort: \ArchivedConcertInfo.setlist.date, order: .reverse) var concertInfo: [ArchivedConcertInfo]
   @StateObject var viewModel = ArchivingViewModel.shared
-
+  @StateObject var tabViewManager: TabViewManager
+  @Namespace var topID
+  
   var body: some View {
-    VStack(alignment: .leading) {
-      Text("보관함").font(.title2).fontWeight(.semibold).foregroundStyle(Color.mainBlack)
-        .padding(.top, 23)
-      Divider()
-        .foregroundStyle(Color.lineGrey1)
-        .padding(.trailing, -25)
-        .padding(.top, 7)
-      segmentedButtonsView
-      if viewModel.selectSegment == .bookmark {
-        bookmarkView
-      } else {
-        artistView
+    NavigationStack(path: $tabViewManager.pageStack) {
+      VStack {
+        segmentedButtonsView
+          .padding(.horizontal, 24)
+          .padding(.vertical)
+        if viewModel.selectSegment == .bookmark {
+          bookmarkView
+        } else {
+          artistView
+        }
+      }
+      .background(Color.backgroundWhite)
+      .navigationTitle("보관함")
+      .navigationDestination(for: NavigationDelivery.self) { value in
+        if value.setlistId != nil {
+          SetlistView(setlistId: value.setlistId, artistInfo: ArtistInfo(
+            name: value.artistInfo.name,
+            alias: value.artistInfo.alias,
+            mbid: value.artistInfo.mbid,
+            gid: value.artistInfo.gid,
+            imageUrl: value.artistInfo.imageUrl,
+            songList: value.artistInfo.songList))
+        } else {
+          ArtistView(selectedTab: $selectedTab, artistName: value.artistInfo.name, artistAlias: value.artistInfo.alias, artistMbid: value.artistInfo.mbid)
+        }
       }
     }
-    .padding(.horizontal, 25)
-    .padding(.vertical)
   }
 }
 
 #Preview {
   NavigationStack {
-    ArchivingView(selectedTab: .constant(.archiving))
+    ArchivingView(selectedTab: .constant(.archiving), tabViewManager: .init(consecutiveTaps: Empty().eraseToAnyPublisher()))
   }
 }
 
@@ -67,10 +81,18 @@ extension ArchivingView {
       if concertInfo.isEmpty {
         IsEmptyCell(type: .bookmark)
       } else {
-        ScrollView {
-          bookmarkListView
+        ScrollViewReader { proxy in
+          ScrollView {
+            Spacer().id(topID)
+            bookmarkListView
+          }
+          .scrollIndicators(.hidden)
+          .onReceive(tabViewManager.$scrollToTop) { _ in
+            withAnimation {
+              proxy.scrollTo(topID)
+            }
+          }
         }
-        .scrollIndicators(.hidden)
       }
     }
   }
@@ -79,6 +101,14 @@ extension ArchivingView {
     VStack {
       ScrollView(.horizontal) {
         HStack {
+          Rectangle()
+            .padding(2)
+            .foregroundStyle(.clear)
+          Button {
+            viewModel.selectArtist = ""
+          } label: {
+            AllArtistsSetCell(name: "전체", isSelected: viewModel.selectArtist.isEmpty)
+          }
           ForEach(viewModel.artistSet.sorted(), id: \.self) { artist in
             Button {
               if viewModel.selectArtist == artist {
@@ -100,10 +130,9 @@ extension ArchivingView {
           ArchiveConcertInfoCell(selectedTab: $selectedTab, info: item)
           Divider()
             .foregroundStyle(Color.lineGrey1)
-            .padding(.horizontal)
+          .padding(.horizontal, 20)
         }
       }
-      .padding(.horizontal, -25)
     }
     .onAppear { viewModel.insertArtistSet(concertInfo) }
     .onChange(of: concertInfo) { _, newValue in
@@ -116,22 +145,44 @@ extension ArchivingView {
       if likeArtists.isEmpty {
         IsEmptyCell(type: .likeArtist)
       } else {
-        List {
-          Text("찜한 아티스트 중 상단의 5명이 메인화면에 등장합니다\n변경을 원하신다면 아티스트를 꾹 눌러 순서를 옮겨주세요")
-            .font(.footnote)
-            .foregroundStyle(Color.fontGrey2)
-            .padding(.top)
-            .listRowBackground(Color.backgroundWhite)
-          artistListView
-            .listRowSeparator(.hidden)
-            .listRowBackground(Color.backgroundWhite)
+        ScrollViewReader { proxy in
+          List {
+            VStack(alignment: .leading, spacing: 0) {
+              Text("찜한 아티스트 중 상단의 5명이 메인화면에 등장합니다")
+                .font(.footnote)
+                .foregroundStyle(Color.fontGrey2)
+                .padding(.top)
+                .listRowBackground(Color.backgroundWhite)
+              Group {
+                Text("변경을 원하신다면 ")
+                  .font(.footnote)
+                  .foregroundStyle(Color.fontGrey2)
+                +
+                Text("아티스트를 꾹 눌러 순서를 옮겨보세요")
+                  .font(.footnote)
+                  .fontWeight(.semibold)
+                  .foregroundStyle(Color.fontGrey2)
+              }
+            }.id(topID)
+              .listRowSeparator(.hidden)
+              .listRowBackground(Color.backgroundWhite)
+            
+            artistListView
+              .listRowSeparator(.hidden)
+              .listRowBackground(Color.backgroundWhite)
+          }
+          .scrollIndicators(.hidden)
+          .listStyle(.plain)
+          .padding(EdgeInsets(top: -10, leading: -18, bottom: 10, trailing: -18))
+          .onReceive(tabViewManager.$scrollToTop) { _ in
+            withAnimation {
+              proxy.scrollTo(topID)
+            }
+          }
         }
-        
-        .scrollIndicators(.hidden)
-        .listStyle(.plain)
-        .padding(EdgeInsets(top: -10, leading: -18, bottom: -10, trailing: -18))
       }
     }
+    .padding(.horizontal, 24)
   }
   
   private var artistListView: some View {
@@ -142,10 +193,9 @@ extension ArchivingView {
           .font(.subheadline)
           .foregroundStyle(index < 5 ? Color.mainOrange : Color.mainBlack)
           .background(
-            NavigationLink("", destination: ArtistView(selectedTab: $selectedTab,
-                                                       artistName: item.artistInfo.name,
-                                                       artistAlias: item.artistInfo.alias,
-                                                       artistMbid: item.artistInfo.mbid))
+            NavigationLink(value: NavigationDelivery(artistInfo: SaveArtistInfo(name: item.artistInfo.name, country: "", alias: item.artistInfo.alias, mbid: item.artistInfo.mbid, gid: 0, imageUrl: "", songList: []))) {
+              Text("")
+            }
             .opacity(0)
           )
         Spacer()

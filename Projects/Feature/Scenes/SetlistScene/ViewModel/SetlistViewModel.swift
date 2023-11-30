@@ -19,8 +19,9 @@ final class SetlistViewModel: ObservableObject {
   let artistDataManager = ArtistDataManager()
   let dataManager = SwiftDataManager()
   
-  var setlistSongName: [String] = []
-  var setlistSongKoreanName: [String] = []
+  // [(songTitle, artistName)]
+  var setlistSongName: [(String, String?)] = []
+  var setlistSongKoreanName: [(String, String?)] = []
   
   init() {
     self.isBookmarked = false
@@ -42,6 +43,7 @@ final class SetlistViewModel: ObservableObject {
     let outputDateFormatter: DateFormatter = {
       let formatter = DateFormatter()
       formatter.dateFormat = format
+      formatter.locale = Locale(identifier: "en_US")
       return formatter
     }()
     
@@ -52,6 +54,39 @@ final class SetlistViewModel: ObservableObject {
     }
   }
   
+  func dayAndMonthDateFormatter(inputDate: String) -> String? {
+    guard let languageCode = Locale.current.language.languageCode?.identifier else { return "" }
+
+      let dateFormatter = DateFormatter()
+      dateFormatter.dateFormat = "dd-MM-yyyy"
+
+      // 입력된 날짜 문자열을 "dd-MM-yyyy" 형식으로 변환
+      guard let convertedDate = dateFormatter.date(from: inputDate) else {
+          return ""
+      }
+
+      dateFormatter.dateFormat = (languageCode == "ko") ? "MM.dd" : "dd.MM"
+
+      // 변환된 날짜를 설정한 형식으로 문자열로 반환
+      return dateFormatter.string(from: convertedDate)
+  }
+  func  allDateFormatter(inputDate: String) -> String? {
+    guard let languageCode = Locale.current.language.languageCode?.identifier else { return "" }
+
+      let dateFormatter = DateFormatter()
+      dateFormatter.dateFormat = "dd-MM-yyyy"
+
+      // 입력된 날짜 문자열을 "dd-MM-yyyy" 형식으로 변환
+      guard let convertedDate = dateFormatter.date(from: inputDate) else {
+          return ""
+      }
+      // TODO: 날짜 형식 어떻게 보여줄지? 정하기
+      dateFormatter.dateFormat = (languageCode == "ko") ? "yyyy년 MM월 dd일" : "MMMM dd, yyyy"
+
+      // 변환된 날짜를 설정한 형식으로 문자열로 반환
+      return dateFormatter.string(from: convertedDate)
+  }
+
   func convertDateStringToDate(_ dateString: String, format: String = "dd-MM-yyyy") -> Date? {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = format
@@ -64,16 +99,32 @@ final class SetlistViewModel: ObservableObject {
     }
   }
 
-  func addElementToArray(title: String, songList: [Titles]) {
-    // 애플 뮤직용 음악 배열
-    if !self.setlistSongName.contains(title) {
-      self.setlistSongName.append(title)
+  func createArrayForExportPlaylist(setlist: Setlist?, songList: [Titles], artistName: String?) {
+    
+    setlistSongName = []
+    setlistSongKoreanName = []
+    
+    for session in setlist?.sets?.setsSet ?? [] {
+      for song in session.song ?? [] {
+        if let title = song.name {
+          var name: String?
+          if let cover = song.cover?.name { // 커버곡이면
+            name = cover
+          } else { // 커버곡이 아니면
+            name = artistName
+          }
+          
+          // 영문 배열에 추가
+          self.setlistSongName.append((title, name))
+          
+          // 한글 배열에 추가
+          let tmp = self.koreanConverter.findKoreanTitle(title: title, songList: songList) ?? title
+          self.setlistSongKoreanName.append((tmp, name))
+          
+        }
+        
+      }
     }
-    // 스크린샷용 음악 배열
-    let tmp = self.koreanConverter.findKoreanTitle(title: title, songList: songList) ?? title
-    if !self.setlistSongKoreanName.contains(tmp) {
-      self.setlistSongKoreanName.append(tmp)
-    }
+    
   }
-  
 }

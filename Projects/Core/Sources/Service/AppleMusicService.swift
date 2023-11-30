@@ -17,20 +17,20 @@ public final class AppleMusicService: MusicPlaylistAddable, Sendable {
   }
   
   // 플레이리스트 추가 및 음악 목록 추가
-  public func addPlayList(name: String, musicList: [String], singer: String?, venue: String?) {
+  public func addPlayList(name: String, musicList: [(String, String?)], venue: String?) {
     Task {
       // musicList를 index가 들어간 튜플로 변환
-      let indexedMusicList = musicList.enumerated().map { (index, title) in
-        (index, title)
+      let indexedMusicList = musicList.enumerated().map { (index, music) in
+        (index, music)
       }
       // index 순서대로 정렬
       let sortedMusicList = indexedMusicList.sorted { $0.0 < $1.0 }.map { $0.1 }
       
       let newPlayList = try await MusicLibrary.shared.createPlaylist(name: String(name), description: "Seta에서 생성된 플레이리스트 입니다.", authorDisplayName: String(venue ?? ""))
       
-      for musicTitle in sortedMusicList {
+      for music in sortedMusicList {
         // MusicCatalogSearchRequest를 비동기로 처리
-        let response = try await searchMusic(title: String(musicTitle), singer: singer ?? "")
+        let response = try await searchMusic(title: String(music.0), singer: music.1 ?? "")
         
         if let song = response.songs.first {
           // 순차적으로 MusicLibrary에 추가
@@ -83,5 +83,9 @@ public final class CheckAppleMusicSubscription: ObservableObject {
       // 사용자가 애플 뮤직을 구독 중이지 않다면
       if capability.contains(SKCloudServiceCapability.musicCatalogSubscriptionEligible) { self.check = false }
     }
+  }
+  
+  public func getCheckValue() -> Bool {
+      return check
   }
 }

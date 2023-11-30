@@ -15,27 +15,68 @@ import Combine
 
 struct ArtistImage: View {
   @Binding var selectedTab: Tab
-  
   var imageUrl: String
-    var body: some View {
-      AsyncImage(url: URL(string: imageUrl)) { image in
-        image
-          .resizable()
-          .scaledToFill()
-          .overlay {
-            MainView(selectedTab: $selectedTab).artistImageOverlayButton
-          }
-          .clipShape(RoundedRectangle(cornerRadius: 15))
+  
+  var body: some View {
+    VStack {
+      Group {
+        if !imageUrl.isEmpty {
+          AsyncImage(url: URL(string: imageUrl)) { image in
+            image
+              .resizable()
+              .scaledToFill()
+              .overlay {
+                artistImageOverlayButton
+                  .frame(width: UIWidth * 0.81, height: UIWidth * 0.81)
+              }
+              .clipShape(RoundedRectangle(cornerRadius: 15))
               .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.mainGrey1, lineWidth: 1))
-      } placeholder: {
-        VStack {
-          Spacer()
-          ProgressView()
-          Spacer()
+          } placeholder: {
+            ProgressView()
+          }
+        } else {
+          artistEmptyImage
         }
       }
-      .frame(width: UIWidth * 0.78, height: UIWidth * 0.78)
+      .frame(width: UIWidth * 0.81, height: UIWidth * 0.81)
     }
+  }
+  
+  public var artistEmptyImage: some View {
+    RoundedRectangle(cornerRadius: 15)
+      .foregroundStyle(Color.mainGrey1)
+      .overlay(
+        Image("ticket", bundle: setaBundle)
+          .resizable()
+          .renderingMode(.template)
+          .foregroundStyle(Color.lineGrey1)
+          .aspectRatio(contentMode: .fit)
+          .frame(width: UIWidth * 0.43)
+      )
+      .overlay {
+        artistImageOverlayButton
+      }
+      .frame(width: UIWidth * 0.81, height: UIWidth * 0.81)
+  }
+  
+  public var artistImageOverlayButton: some View {
+    VStack {
+      Spacer()
+      HStack {
+        Spacer()
+        Circle()
+          .frame(width: UIWidth * 0.15)
+          .foregroundStyle(Color.mainBlack)
+          .overlay {
+            Image(systemName: "arrow.right")
+              .font(.title3)
+              .foregroundStyle(Color.settingTextBoxWhite)
+          }
+          .shadow(color: Color.mainWhite.opacity(0.25), radius: 20, y: 4)
+      }
+    }
+    .padding([.trailing, .bottom])
+  }
 }
 
 #Preview {

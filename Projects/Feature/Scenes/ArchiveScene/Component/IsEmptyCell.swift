@@ -21,9 +21,12 @@ struct IsEmptyCell: View {
         .font(.headline)
         .foregroundStyle(Color.mainBlack)
         .padding(.bottom, 12)
-      Text(type == .bookmark ? "관심있는 공연을 북마크하고\n빠르게 세트리스트를 확인해보세요" : "관심있는 아티스트를 찜하고\n공연 및 세트리스트 정보를 빠르게 확인해보세요")
-        .font(.footnote)
-        .foregroundStyle(Color.fontGrey2)
+      Group {
+        Text(type == .bookmark ? "관심있는 공연을 북마크하고" : "관심있는 아티스트를 찜하고")
+        Text(type == .bookmark ? "빠르게 세트리스트를 확인해보세요" : "공연 및 세트리스트 정보를 빠르게 확인해보세요")
+      }
+      .font(.footnote)
+      .foregroundStyle(Color.fontGrey2)
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
     .multilineTextAlignment(.center)

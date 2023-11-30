@@ -14,94 +14,58 @@ final class SearchViewModel: ObservableObject {
   let dataService = SetlistDataService()
   let artistDataManager = ArtistDataManager()
   let koreanConverter = KoreanConverter()
-  
+  let artistFetchService = ArtistFetchService()
+
   @Published var searchText: String = ""
   @Published var searchIsPresented: Bool = false
   @Published var artistList: [MusicBrainzArtist] = []
   @Published var isLoading: Bool = false
-  @Published var koreanRandomArtist: [OnboardingModel] = []
-  @Published var foreignRandomArtist: [OnboardingModel] = []
-  @Published var koreanArtistInfo: [ArtistInfo?] = []
-  @Published var foreignArtistInfo: [ArtistInfo?] = []
-  
+  @Published var domesticArtists: [OnboardingModel] = []
+  @Published var foreignArtists: [OnboardingModel] = []
   private var cancellables = Set<AnyCancellable>()
-  
+
   init() {
-    // Combine Publisher for searchText
     let searchTextPublisher = $searchText
       .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
       .removeDuplicates()
-    
-    // Subscribe to searchTextPublisher and call getArtistList()
     searchTextPublisher
-      .sink { [weak self] searchText in
+      .sink { [weak self] _ in
         self?.getSearchArtistList()
       }
       .store(in: &cancellables)
-  }
-  
-  func getRandomArtist(artists: [OnboardingModel]) -> [OnboardingModel] {
-      let shuffledArtists = artists.shuffled() // 아티스트를 랜덤으로 섞음
-      let selectedArtists = Array(shuffledArtists.prefix(9)) // 처음부터 9개 선택
 
-      return selectedArtists
-  }
-
-  func getArtistList(artistModel: [OnboardingModel], viewModel: OnboardingViewModel) {
-      var foreignArtists: [OnboardingModel] = []
-      var koreanArtists: [OnboardingModel] = []
-
-      for index in artistModel.indices {
-          if artistModel[index].filter == "해외가수" {
-              foreignArtists.append(artistModel[index])
-          } else {
-              koreanArtists.append(artistModel[index])
+    if artistFetchService.allArtist.isEmpty {
+      artistFetchService.fetchData { success in
+          if success {
+            self.domesticArtists = self.getRandomArtists(.kpop)
+            self.foreignArtists = self.getRandomArtists(.pop)
           }
       }
-
-      self.foreignRandomArtist = getRandomArtist(artists: foreignArtists)
-      self.koreanRandomArtist = getRandomArtist(artists: koreanArtists)
-    
-  }
-  
-  func updateArtistInfo() {
-    for index in 0..<foreignRandomArtist.count {
-      self.getArtistInfo(artistName: foreignRandomArtist[index].name, artistMbid: foreignRandomArtist[index].mbid) { result in
-        if let result = result {
-          self.foreignArtistInfo.append(result)
-
-        }
-      }
-    }
-
-    for index in 0..<koreanRandomArtist.count {
-      self.getArtistInfo(artistName: koreanRandomArtist[index].name, artistMbid: koreanRandomArtist[index].mbid) { result in
-        if let result = result {
-          self.koreanArtistInfo.append(result)
-        }
-      }
     }
   }
-  
-  public func getArtistInfo(artistName: String, artistMbid: String, completion: @escaping (ArtistInfo?) -> Void) {
-    var artistInfo: ArtistInfo?
-    
-    dataService.searchArtistFromGenius(artistName: artistName) { result in
-      if let result = result {
-        DispatchQueue.main.async {
-          artistInfo = self.artistDataManager.findOnboardingArtistImage(artistName: artistName, artistAlias: "", artistMbid: artistMbid, hits: result.response?.hits ?? [])
-          completion(artistInfo)
+
+  enum ArtistKind {
+    case kpop
+    case pop
+  }
+
+  func getRandomArtists(_ kind: ArtistKind) -> [OnboardingModel] {
+    if searchIsPresented == false {
+      let kpopArtists = artistFetchService.allArtist.filter { artist in
+        if let tags = artist.tags, artist.country == (kind == .kpop ? "South Korea" : "") {
+          if artist.url != nil && artist.url != "" {
+            return tags.contains(kind == .kpop ? "K-Pop" : "Pop")
+          }
         }
-      } else {
-        completion(nil)
+        return false
       }
+      return Array(kpopArtists.shuffled().prefix(9))
     }
+    return []
   }
 
   func getSearchArtistList() {
     self.isLoading = true
-    
-    // Fetch artist list and update isLoading and artistList when completed
     Future<[MusicBrainzArtist], Error> { promise in
       self.dataService.searchArtistsFromMusicBrainz(artistName: self.searchText) { result in
         if let result = result {
@@ -124,9 +88,4 @@ final class SearchViewModel: ObservableObject {
     }
     .store(in: &cancellables)
   }
-}
-
-enum ScrollID: String {
-  case top
-  case searchBar
 }

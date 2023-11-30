@@ -16,7 +16,7 @@ struct ArchiveArtistCell: View {
   var body: some View {
     Group {
       if let url = artistUrl {
-        AsyncImage(url: artistUrl) { image in
+        AsyncImage(url: url) { image in
           image
             .centerCropped()
         } placeholder: {

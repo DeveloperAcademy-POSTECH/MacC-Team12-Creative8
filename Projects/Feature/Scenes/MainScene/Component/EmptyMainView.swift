@@ -22,20 +22,30 @@ struct EmptyMainView: View {
         .font(.callout)
         .padding(.bottom)
         .foregroundStyle(Color.mainBlack)
-      Text("관심있는 아티스트 정보를 빠르게\n확인하고 싶으시다면 찜을 해주세요")
+      Group {
+        VStack {
+          Text("관심있는 아티스트 정보를 빠르게")
+          Text("확인하고 싶으시다면 찜을 해주세요")
+        }
+      }
         .font(.footnote)
         .multilineTextAlignment(.center)
         .foregroundStyle(Color.fontGrey2)
         .padding(.bottom)
-      Button("아티스트 찜하러 가기 →") {
+      Button {
         selectedTab = .search
+      } label: {
+        HStack {
+          Text("아티스트 찜하러 가기")
+          Image(systemName: "magnifyingglass")
+        }
+        .bold()
+        .foregroundStyle(Color.mainWhite)
+        .font(.system(size: 14))
+        .padding(EdgeInsets(top: 17, leading: 22, bottom: 17, trailing: 22))
+        .background(RoundedRectangle(cornerRadius: 14)
+          .foregroundStyle(Color.buttonBlack))
       }
-      .foregroundStyle(Color.mainWhite)
-      .font(.system(size: 14))
-      .padding(EdgeInsets(top: 17, leading: 22, bottom: 17, trailing: 22))
-      .background(RoundedRectangle(cornerRadius: 14)
-        .foregroundStyle(Color.buttonBlack))
-      .bold()
       .padding(.vertical)
       Spacer()
     }

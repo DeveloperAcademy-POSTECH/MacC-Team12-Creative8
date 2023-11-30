@@ -12,6 +12,7 @@ import UI
 struct SearchBar: View {
   @Binding var text: String
   @Binding var isEditing: Bool
+  var placeholder: LocalizedStringResource = "아티스트를 검색하세요"
   
   init(text: Binding<String>, isEditing: Binding<Bool>) {
     self._text = text
@@ -20,7 +21,7 @@ struct SearchBar: View {
   
   var body: some View {
     HStack {
-      TextField("아티스트를 검색하세요", text: $text)
+      TextField("", text: $text, prompt: Text(placeholder))
         .autocorrectionDisabled(true)
         .padding(7)
         .padding(.horizontal, 34)
@@ -64,5 +65,6 @@ struct SearchBar: View {
       }
     }
     .textCase(.none)
+    .padding(.bottom, 20)
   }
 }

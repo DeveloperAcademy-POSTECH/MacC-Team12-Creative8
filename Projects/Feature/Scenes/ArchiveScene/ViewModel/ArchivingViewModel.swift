@@ -8,8 +8,32 @@
 
 import Foundation
 import Core
+import Combine
+import SwiftUI
 
 class ArchivingViewModel: ObservableObject {
+  
+//  // MARK: Tab View
+//  @Published var pageStack: [NavigationDelivery] = []
+//  
+//  private var subscription: AnyCancellable?
+//  
+//  init(consecutiveTaps: AnyPublisher<Void, Never>) {
+//    subscription = consecutiveTaps
+//      .sink { [weak self] in
+//        guard let self else { return }
+//        
+//        withAnimation {
+//          if self.pageStack.isEmpty {
+//            // TODO: Scroll 최상단으로 이동
+//          } else {
+//            self.pageStack.removeLast()
+//          }
+//        }
+//        
+//      }
+//  }
+  
   static let shared = ArchivingViewModel()
   @Published var selectSegment: SelectEnum = .bookmark
 	@Published var selectArtist: String = ""
