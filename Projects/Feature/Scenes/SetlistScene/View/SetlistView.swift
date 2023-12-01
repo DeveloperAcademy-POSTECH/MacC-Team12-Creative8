@@ -21,9 +21,6 @@ struct SetlistView: View {
   @Query var likeArtist: [LikeArtist]
   @Environment(\.modelContext) var modelContext
   @State private var showToastMessage = false
-  
-//  @State private var showToastMessageAppleMusic = false
-//  @State private var showToastMessageCapture = false
   @StateObject var exportViewModel = ExportPlaylistViewModel()
   
   var body: some View {
@@ -43,8 +40,8 @@ struct SetlistView: View {
           ExportPlaylistButtonView(setlist: setlist,
                                    artistInfo: artistInfo,
                                    vm: vm,
-                                   showToastMessageAppleMusic: $exportViewModel.showToastMessageAppleMusic,
-                                   showToastMessageCapture: $exportViewModel.showToastMessageCapture,
+                                   showToastAppleMusic: $exportViewModel.showToastMessageAppleMusic,
+                                   showToastCapture: $exportViewModel.showToastMessageCapture,
                                    exportViewModel: exportViewModel)
         }
       }
@@ -70,11 +67,11 @@ struct SetlistView: View {
        exportViewModel: exportViewModel
     )
     .customAlert(primaryButton: CustomAlertButton(title: "확인", action: {
-      // TODO: 유튜브뮤직
-      vm.showModal.toggle()
+      let musicList = vm.setlistSongName
+      exportViewModel.addToYouTubeMusic(musicList: musicList)
     }), dismissButton: CustomAlertButton(title: "취소", action: {
       vm.showModal.toggle()
-      exportViewModel.showAppleMusicAlert.toggle()
+      exportViewModel.showYouTubeAlert.toggle()
     }),
      isPresented: $exportViewModel.showYouTubeAlert,
      artistInfo: artistInfo,

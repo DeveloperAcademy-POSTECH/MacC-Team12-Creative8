@@ -16,7 +16,7 @@ class ArtistViewModel: ObservableObject {
   let artistDataManager = ArtistDataManager()
   let swiftDataManager = SwiftDataManager()
   let archivingViewModel = ArchivingViewModel.shared
-  
+
   var artistInfo: ArtistInfo = ArtistInfo(name: "", mbid: "")
   var setlists: [Setlist]?
   var page: Int = 1

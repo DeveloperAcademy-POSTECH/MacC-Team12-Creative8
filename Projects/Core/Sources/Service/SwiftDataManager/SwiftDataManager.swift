@@ -34,9 +34,9 @@ public final class SwiftDataManager: ObservableObject {
     let likeArtist = try? modelContext?.fetch(descriptor)
     var max = 0
     guard let likeArtist = likeArtist else { return }
-    for i in 0..<likeArtist.count {
-      if max < likeArtist[i].orderIndex {
-        max = likeArtist[i].orderIndex
+    for index in 0..<likeArtist.count {
+      if max < likeArtist[index].orderIndex {
+        max = likeArtist[index].orderIndex
       }
     }
     let newLikeArtist = LikeArtist(artistInfo: SaveArtistInfo(name: name,

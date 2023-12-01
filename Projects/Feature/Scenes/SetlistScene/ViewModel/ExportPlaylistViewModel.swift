@@ -10,6 +10,7 @@ import Foundation
 import Photos
 import Core
 import MusicKit
+import GoogleSignIn
 
 final class ExportPlaylistViewModel: ObservableObject {
   @Published var playlistTitle: String = ""
@@ -19,6 +20,7 @@ final class ExportPlaylistViewModel: ObservableObject {
   @Published var showToastMessageCapture = false
   @Published var showLibrarySettingsAlert = false
   @Published var showMusicSettingsAlert = false
+  
   
   //MARK: Photo
   func checkPhotoPermission() -> Bool {
@@ -113,7 +115,18 @@ final class ExportPlaylistViewModel: ObservableObject {
   }
   
   //MARK: YouTubeMusic
-  func addToYouTubeMusic() {
-    //TODO: 유튜브뮤직
+  func addToYouTubeMusic(musicList: [(String, String?)]) {
+    YoutubeService().googleSignIn() { success in
+      let user = GIDSignIn.sharedInstance.currentUser
+      if let user = user {
+        let youtubeService = YoutubeService().createYouTubeService(user: user)
+        YoutubeService().createPlaylist(
+          service: youtubeService,
+          title: self.playlistTitle, 
+          musicList: musicList
+        )
+        self.showYouTubeAlert = false
+      }
+    }
   }
 }

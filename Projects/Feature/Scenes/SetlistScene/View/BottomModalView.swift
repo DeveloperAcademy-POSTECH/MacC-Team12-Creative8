@@ -18,8 +18,8 @@ struct BottomModalView: View {
   let artistInfo: ArtistInfo?
   @ObservedObject var exportViewModel: ExportPlaylistViewModel
   @ObservedObject var vm: SetlistViewModel
-  @Binding var showToastMessageAppleMusic: Bool
-  @Binding var showToastMessageCapture: Bool
+  @Binding var showToastAppleMusic: Bool
+  @Binding var showToastCapture: Bool
   @State var isSharePresented = false
   
   @ObservedObject var spotifyService = SpotifyService()
@@ -57,11 +57,10 @@ struct BottomModalView: View {
         }
         
         Spacer()
-        
-        platformButtonView(title: "Youtube Music", image: "youtubeMusic") {
-          //TODO: 유튜브 뮤직(플레이리스트 추가 부분은 ExportPlayListViewModel 안에서 추가하셔야 합니다!)
-          //          exportViewModel.showYouTubeMusicAlert.toggle()
-          //          exportViewModel.playlistTitle = ""
+          .frame(width: 14)
+          platformButtonView(title: "Youtube Music", image: "youtubeMusic") {
+          exportViewModel.showYouTubeAlert = true
+            vm.showModal = false
         }
         
         Spacer()

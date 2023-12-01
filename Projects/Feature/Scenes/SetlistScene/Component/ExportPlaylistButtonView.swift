@@ -14,8 +14,8 @@ struct ExportPlaylistButtonView: View {
   let setlist: Setlist?
   let artistInfo: ArtistInfo?
   @ObservedObject var vm: SetlistViewModel
-  @Binding var showToastMessageAppleMusic: Bool
-  @Binding var showToastMessageCapture: Bool
+  @Binding var showToastAppleMusic: Bool
+  @Binding var showToastCapture: Bool
   @ObservedObject var exportViewModel: ExportPlaylistViewModel
 
   var body: some View {
@@ -23,9 +23,9 @@ struct ExportPlaylistButtonView: View {
       Spacer()
       
       Group {
-        if showToastMessageAppleMusic {
+        if showToastAppleMusic {
           ToastMessageView(message: "1~2분 후 Apple Music에서 확인하세요")
-        } else if showToastMessageCapture {
+        } else if showToastCapture {
           ToastMessageView(message: "캡쳐된 사진을 앨범에서 확인하세요")
         }
       }
@@ -49,7 +49,7 @@ struct ExportPlaylistButtonView: View {
       })
     }
     .sheet(isPresented: $vm.showModal) {
-      BottomModalView(setlist: setlist, artistInfo: artistInfo, exportViewModel: exportViewModel, vm: vm, showToastMessageAppleMusic: $showToastMessageAppleMusic, showToastMessageCapture: $showToastMessageCapture)
+      BottomModalView(setlist: setlist, artistInfo: artistInfo, exportViewModel: exportViewModel, vm: vm, showToastAppleMusic: $showToastAppleMusic, showToastCapture: $showToastCapture)
         .presentationDetents([.fraction(0.5)])
         .presentationDragIndicator(.visible)
     }

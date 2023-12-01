@@ -10,6 +10,7 @@ import SwiftData
 import Feature
 import Core
 import Firebase
+import GoogleSignIn
 
 @main
 struct SetlistApp: App {
@@ -40,10 +41,12 @@ struct SetlistApp: App {
         OnboardingView()
       } else {
         TabBarView()
+          .onOpenURL(perform: { url in
+            GIDSignIn.sharedInstance.handle(url)
+          })
       }
     }
     .modelContainer(sharedModelContainer)
-    
   }
 }
 

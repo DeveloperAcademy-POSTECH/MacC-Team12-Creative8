@@ -6,10 +6,7 @@
 //
 
 import ProjectDescription
+import ProjectDescriptionHelpers
 
-let workspace = Workspace(
-    name: "Setlist",
-    projects: [
-        "Projects/App"
-    ]
-)
+let workspace = Workspace(name: "Setlist",
+                          projects: Module.allCases.map(\.path))
