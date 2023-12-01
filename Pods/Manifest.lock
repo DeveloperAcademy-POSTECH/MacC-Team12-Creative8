@@ -1,0 +1,27 @@
+PODS:
+  - GoogleAPIClientForREST/Core (1.2.1):
+    - GTMSessionFetcher (>= 1.1.7)
+  - GoogleAPIClientForREST/YouTube (1.2.1):
+    - GoogleAPIClientForREST/Core
+    - GTMSessionFetcher (>= 1.1.7)
+  - GTMSessionFetcher (3.1.1):
+    - GTMSessionFetcher/Full (= 3.1.1)
+  - GTMSessionFetcher/Core (3.1.1)
+  - GTMSessionFetcher/Full (3.1.1):
+    - GTMSessionFetcher/Core
+
+DEPENDENCIES:
+  - GoogleAPIClientForREST/YouTube (~> 1.2.1)
+
+SPEC REPOS:
+  trunk:
+    - GoogleAPIClientForREST
+    - GTMSessionFetcher
+
+SPEC CHECKSUMS:
+  GoogleAPIClientForREST: a8b95a252014ce2e618df6b75dc72eca2c00b4af
+  GTMSessionFetcher: e8647203b65cee28c5f73d0f473d096653945e72
+
+PODFILE CHECKSUM: a39bea8812ac59a469682e60454ab8941f37f1f1
+
+COCOAPODS: 1.12.1

@@ -12,6 +12,7 @@
 		14F67ACCF1E2EA452132B96E /* ArtistListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03512B6F11F4C7FDA6C687A /* ArtistListModel.swift */; };
 		2011FDAC897731D9379DD8C1 /* ArtistFetchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569CF2C676DD875C163323FA /* ArtistFetchService.swift */; };
 		25C534647B7B805047B8E0C3 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 8E94B8246DEF3E9C6A0D79BD /* GoogleSignIn */; };
+		27440C4CCDFC8BA1A3D0B3BE /* Pods_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2887BF0EE33A844294DA8593 /* Pods_Core.framework */; };
 		323BDCF0BE9904DD1057E69D /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B667B36D9B1DD2BBFB353DB /* APIKeys.swift */; };
 		48468737968AC50E4DA8C753 /* LikeArtistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752E25910681A644F3142B68 /* LikeArtistModel.swift */; };
 		51B1D4ED7ECB508C4A97445F /* SpotifyAPI in Frameworks */ = {isa = PBXBuildFile; productRef = F46EB0C818DE9ABAA254D9B3 /* SpotifyAPI */; };
@@ -70,6 +71,7 @@
 		109A8C5BADA31C5966791E4F /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		143BA5525B0777162DED185D /* SaveSetlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSetlist.swift; sourceTree = "<group>"; };
 		26BDD2D3E7FED8CDE9A52F46 /* Core-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Core-Info.plist"; sourceTree = "<group>"; };
+		2887BF0EE33A844294DA8593 /* Pods_Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B0FA7F85F3573FB522F9478 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3987D3B9B389368A5B5AF548 /* ArtistInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistInfoModel.swift; sourceTree = "<group>"; };
 		3CF4F12A755C30296E33F86F /* KoreanConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanConverter.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 		4F5F16996E458A8A1147E2AE /* ArchivedConcertInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedConcertInfo.swift; sourceTree = "<group>"; };
 		521DFD8C0C6556F13D1C19CA /* SpotifyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyService.swift; sourceTree = "<group>"; };
 		569CF2C676DD875C163323FA /* ArtistFetchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistFetchService.swift; sourceTree = "<group>"; };
+		74FD07504A314FAF699FEE0E /* Pods-Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.release.xcconfig"; path = "Target Support Files/Pods-Core/Pods-Core.release.xcconfig"; sourceTree = "<group>"; };
 		752E25910681A644F3142B68 /* LikeArtistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeArtistModel.swift; sourceTree = "<group>"; };
 		75600AD4887E89C2223BF659 /* SetlistListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetlistListModel.swift; sourceTree = "<group>"; };
 		845DD837E5346A7627964873 /* SaveArtistInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveArtistInfo.swift; sourceTree = "<group>"; };
@@ -89,6 +92,7 @@
 		D81A5985FBB055CC8CA4FAB8 /* CoreTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "CoreTests-Info.plist"; sourceTree = "<group>"; };
 		DB7A053F3B85B42931EE002B /* ArtistDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistDataManager.swift; sourceTree = "<group>"; };
 		E2A32F1995BE8972BD993B58 /* SearchHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryModel.swift; sourceTree = "<group>"; };
+		F09E6DDC9FD3FBEDB5F237A8 /* Pods-Core.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.debug.xcconfig"; path = "Target Support Files/Pods-Core/Pods-Core.debug.xcconfig"; sourceTree = "<group>"; };
 		F1E8FD75EE835B93B68B559F /* SetlistDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetlistDataService.swift; sourceTree = "<group>"; };
 		FAC0C440B4634AAB35C8E3D0 /* GeniusSongsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeniusSongsModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,6 +105,7 @@
 				E7494D59CF3A2D7FFFEE3DA2 /* KeychainAccess in Frameworks */,
 				51B1D4ED7ECB508C4A97445F /* SpotifyAPI in Frameworks */,
 				25C534647B7B805047B8E0C3 /* GoogleSignIn in Frameworks */,
+				27440C4CCDFC8BA1A3D0B3BE /* Pods_Core.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +177,16 @@
 			path = InfoPlists;
 			sourceTree = "<group>";
 		};
+		5AEA3AB484069E08BFE0B8D1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F09E6DDC9FD3FBEDB5F237A8 /* Pods-Core.debug.xcconfig */,
+				74FD07504A314FAF699FEE0E /* Pods-Core.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../../Pods;
+			sourceTree = "<group>";
+		};
 		6102295BF8EA6BD3F00B6FE2 /* SwiftDataManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,12 +202,14 @@
 				E12816BA35F79D21E0D77318 /* Project */,
 				64E34141D18153ACC8D4E5F8 /* Frameworks */,
 				250C62EE12DB56ECEBB473C3 /* Products */,
+				5AEA3AB484069E08BFE0B8D1 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
 		64E34141D18153ACC8D4E5F8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2887BF0EE33A844294DA8593 /* Pods_Core.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -283,6 +300,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 98830250AF7B3CEC34690D43 /* Build configuration list for PBXNativeTarget "Core" */;
 			buildPhases = (
+				C399E221AAC5C49E71879E84 /* [CP] Check Pods Manifest.lock */,
 				68E9A351E4B1C8B9C155F97C /* Sources */,
 				3FEE3D1A9FD48DDE5D5CDD8B /* Resources */,
 				2A34CD9447D0001C8C98AEF5 /* Embed Frameworks */,
@@ -323,9 +341,9 @@
 			);
 			mainGroup = 62824534F75515F48E8114A7;
 			packageReferences = (
-				8CE900602F17B04FE9220739 /* XCRemoteSwiftPackageReference "SpotifyAPI" */,
+				8CE900602F17B04FE9220739 /* XCRemoteSwiftPackageReference "SpotifyAPI.git" */,
 				E44DA51B234E5E4F99909295 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
-				E3F14A623F45319B6F37ED8C /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				E3F14A623F45319B6F37ED8C /* XCRemoteSwiftPackageReference "KeychainAccess.git" */,
 			);
 			productRefGroup = 250C62EE12DB56ECEBB473C3 /* Products */;
 			projectDirPath = "";
@@ -353,6 +371,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C399E221AAC5C49E71879E84 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Core-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6812F1B21CD10F393796F1D5 /* Sources */ = {
@@ -564,6 +607,7 @@
 		};
 		C6F0DD24793DC9075B33338B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F09E6DDC9FD3FBEDB5F237A8 /* Pods-Core.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -598,6 +642,7 @@
 		};
 		F2BF94242B2654F7A820405E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74FD07504A314FAF699FEE0E /* Pods-Core.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -662,7 +707,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8CE900602F17B04FE9220739 /* XCRemoteSwiftPackageReference "SpotifyAPI" */ = {
+		8CE900602F17B04FE9220739 /* XCRemoteSwiftPackageReference "SpotifyAPI.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Peter-Schorn/SpotifyAPI.git";
 			requirement = {
@@ -670,7 +715,7 @@
 				minimumVersion = 2.2.4;
 			};
 		};
-		E3F14A623F45319B6F37ED8C /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+		E3F14A623F45319B6F37ED8C /* XCRemoteSwiftPackageReference "KeychainAccess.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
 			requirement = {
