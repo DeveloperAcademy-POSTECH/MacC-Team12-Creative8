@@ -13,11 +13,13 @@ let project = Project.makeModule(
   product: .framework,
   packages: [
     .KeychainAccess,
-    .SpotifyAPI
+    .SpotifyAPI,
+    .GoogleSignIn
   ],
   dependencies: [
     .SPM.KeychainAccess,
-    .SPM.SpotifyAPI
+    .SPM.SpotifyAPI,
+    .SPM.GoogleSignIn
   ],
   sources: ["Sources/**"]
 )

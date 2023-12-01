@@ -13,6 +13,36 @@ extension TargetDependency {
 
 public extension TargetDependency.Projcet {
     static let Feature = TargetDependency.project(target: "Feature", path: .relativeToRoot("Projects/Feature"))
-    static let Core = TargetDependency.project(target: "Core", path: .relativeToRoot("Projects/Core"))
-    static let UI = TargetDependency.project(target: "UI", path: .relativeToRoot("Projects/UI"))
 }
+
+public enum Module {
+  case app
+  case core
+  case feature
+  case ui
+}
+
+extension Module {
+  public var name: String {
+    switch self {
+    case .app:
+      return "App"
+    case .core:
+      return "Core"
+    case .feature:
+      return "Feature"
+    case .ui:
+      return "UI"
+    }
+  }
+  
+  public var path: ProjectDescription.Path {
+    return .relativeToRoot("Projects/" + self.name)
+  }
+  
+  public var project: TargetDependency {
+    return .project(target: self.name, path: self.path)
+  }
+}
+
+extension Module: CaseIterable { }

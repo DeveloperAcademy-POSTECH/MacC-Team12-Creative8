@@ -14,14 +14,15 @@ let project = Project.makeModule(
   product: .app,
   packages: [
     .CoreXLSX,
-    .Firebase
+    .Firebase,
+    .GoogleSignIn
   ],
   dependencies: [
     .Projcet.Feature,
     .SPM.CoreXLSX,
-    .SPM.Firebase
+    .SPM.Firebase,
+    .SPM.GoogleSignIn
   ],
   sources: ["Sources/**"],
   resources: ["Resources/**"],
-  infoPlist: .file(path: "Support/Info.plist")
-)
+  infoPlist: .file(path: "Support/Info.plist"))

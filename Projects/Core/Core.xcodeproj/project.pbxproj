@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,7 @@
 		0C6A986F5EE73D0371CC24A1 /* SpotifyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521DFD8C0C6556F13D1C19CA /* SpotifyService.swift */; };
 		14F67ACCF1E2EA452132B96E /* ArtistListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03512B6F11F4C7FDA6C687A /* ArtistListModel.swift */; };
 		2011FDAC897731D9379DD8C1 /* ArtistFetchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569CF2C676DD875C163323FA /* ArtistFetchService.swift */; };
+		25C534647B7B805047B8E0C3 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 8E94B8246DEF3E9C6A0D79BD /* GoogleSignIn */; };
 		323BDCF0BE9904DD1057E69D /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B667B36D9B1DD2BBFB353DB /* APIKeys.swift */; };
 		48468737968AC50E4DA8C753 /* LikeArtistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752E25910681A644F3142B68 /* LikeArtistModel.swift */; };
 		51B1D4ED7ECB508C4A97445F /* SpotifyAPI in Frameworks */ = {isa = PBXBuildFile; productRef = F46EB0C818DE9ABAA254D9B3 /* SpotifyAPI */; };
@@ -21,7 +22,7 @@
 		B5AEB3196F16E3C52EC16288 /* SwiftDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7A7F738C7D540C1FDA072E /* SwiftDataManager.swift */; };
 		B645CCCA0479111367499779 /* AppleMusicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C004E9629A66EFA763B287E6 /* AppleMusicService.swift */; };
 		B6B2E5BD39B2856B9DE9966C /* SaveSetlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143BA5525B0777162DED185D /* SaveSetlist.swift */; };
-		BC8595A1E286E2F5B6EF15C9 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B0FA7F85F3573FB522F9478 /* Core.framework */; platformFilter = ios; };
+		BC8595A1E286E2F5B6EF15C9 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B0FA7F85F3573FB522F9478 /* Core.framework */; };
 		BE88C80EC8D00DCDF2A8E2C8 /* ArtistInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3987D3B9B389368A5B5AF548 /* ArtistInfoModel.swift */; };
 		CFCE7846B7A050A6A39745F3 /* ArchivedConcertInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5F16996E458A8A1147E2AE /* ArchivedConcertInfo.swift */; };
 		DC89DC3BBCE399FE46C00578 /* GeniusSongsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC0C440B4634AAB35C8E3D0 /* GeniusSongsModel.swift */; };
@@ -99,6 +100,7 @@
 			files = (
 				E7494D59CF3A2D7FFFEE3DA2 /* KeychainAccess in Frameworks */,
 				51B1D4ED7ECB508C4A97445F /* SpotifyAPI in Frameworks */,
+				25C534647B7B805047B8E0C3 /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,7 +283,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 98830250AF7B3CEC34690D43 /* Build configuration list for PBXNativeTarget "Core" */;
 			buildPhases = (
-				C50CC719C99DABBB1509EE96 /* SwiftLint */,
 				68E9A351E4B1C8B9C155F97C /* Sources */,
 				3FEE3D1A9FD48DDE5D5CDD8B /* Resources */,
 				2A34CD9447D0001C8C98AEF5 /* Embed Frameworks */,
@@ -295,6 +296,7 @@
 			packageProductDependencies = (
 				B03BA87A737D60691A479935 /* KeychainAccess */,
 				F46EB0C818DE9ABAA254D9B3 /* SpotifyAPI */,
+				8E94B8246DEF3E9C6A0D79BD /* GoogleSignIn */,
 			);
 			productName = Core;
 			productReference = 2B0FA7F85F3573FB522F9478 /* Core.framework */;
@@ -306,12 +308,13 @@
 		83ADD9484DDC11E75E9F182F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = com.creative8.seta;
 				TargetAttributes = {
 				};
 			};
 			buildConfigurationList = 4EBE82DE9849E8F47BAECD7B /* Build configuration list for PBXProject "Core" */;
-			compatibilityVersion = "Xcode 13.0";
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -321,6 +324,7 @@
 			mainGroup = 62824534F75515F48E8114A7;
 			packageReferences = (
 				8CE900602F17B04FE9220739 /* XCRemoteSwiftPackageReference "SpotifyAPI" */,
+				E44DA51B234E5E4F99909295 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				E3F14A623F45319B6F37ED8C /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = 250C62EE12DB56ECEBB473C3 /* Products */;
@@ -349,28 +353,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		C50CC719C99DABBB1509EE96 /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "ROOT_DIR=/Users/kohyeji/Desktop/Setlist/MacC-Team12-Creative8\n        \n${ROOT_DIR}/swiftlint --config ${ROOT_DIR}/.swiftlint.yml";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6812F1B21CD10F393796F1D5 /* Sources */ = {
@@ -488,6 +470,7 @@
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
@@ -511,6 +494,7 @@
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -601,6 +585,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -634,6 +619,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
@@ -692,9 +678,21 @@
 				minimumVersion = 4.2.2;
 			};
 		};
+		E44DA51B234E5E4F99909295 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8E94B8246DEF3E9C6A0D79BD /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GoogleSignIn;
+		};
 		B03BA87A737D60691A479935 /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = KeychainAccess;
