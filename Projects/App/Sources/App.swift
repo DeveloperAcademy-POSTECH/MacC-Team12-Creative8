@@ -13,9 +13,8 @@ import Firebase
 
 @main
 struct SetlistApp: App {
-  @AppStorage("isOnboarding")
-  var isOnboarding: Bool = true
-  
+    @State var isOnboarding: Bool = true
+
   var sharedModelContainer: ModelContainer = {
     let schema = Schema([
       ArchivedConcertInfo.self, LikeArtist.self, SearchHistory.self
@@ -37,7 +36,7 @@ struct SetlistApp: App {
   var body: some Scene {
     WindowGroup {
       if isOnboarding {
-        OnboardingView()
+        OnboardingView(isOnboarding: $isOnboarding)
       } else {
         TabBarView()
       }

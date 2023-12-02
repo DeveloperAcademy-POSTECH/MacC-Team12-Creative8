@@ -11,6 +11,7 @@ import Core
 import UI
 
 public struct OnboardingView: View {
+  @Binding var isOnboarding: Bool
   @ObservedObject var onboardingViewModel = OnboardingViewModel()
   @ObservedObject var artistFetchService = ArtistFetchService()
   @ObservedObject var artistViewModel = ArtistViewModel()
@@ -20,11 +21,12 @@ public struct OnboardingView: View {
   private let artistDataManager = ArtistDataManager()
   private let dataService = SetlistDataService()
   var artistInfo: ArtistInfo?
-  @AppStorage("isOnboarding") var isOnboarding: Bool?
   
-  public init() {
+  public init(isOnboarding: Binding<Bool>) {
+    self._isOnboarding = isOnboarding
   }
-  
+
+
   public var body: some View {
     ZStack(alignment: .bottom) {
       VStack(spacing: 0) {
@@ -58,6 +60,7 @@ public struct OnboardingView: View {
             onboardingViewModel.artistFetchError.toggle()
           }
       }
+      dataManager.resetSwiftData()
     }
   }
   
@@ -196,8 +199,4 @@ struct BasicButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
       configuration.label
     }
-}
-
-#Preview {
-  OnboardingView()
 }
