@@ -25,9 +25,21 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>com.googleusercontent.apps.656710646232-9eo9khq1b0b2bn43hd0tlqfhiu0eql14</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>creative8.seta.Seta</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>seta</string>
 			</array>
 		</dict>
 	</array>
