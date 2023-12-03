@@ -146,4 +146,15 @@ public final class SwiftDataManager: ObservableObject {
       }
     }
   }
+
+  // MARK: 쇼케이스용 리셋 함수
+  public func resetSwiftData() {
+    do {
+      try modelContext?.delete(model: LikeArtist.self)
+      try modelContext?.delete(model: SearchHistory.self)
+      try modelContext?.delete(model: ArchivedConcertInfo.self)
+    } catch {
+        print("Failed to delete all schools.")
+    }
+  }
 }
