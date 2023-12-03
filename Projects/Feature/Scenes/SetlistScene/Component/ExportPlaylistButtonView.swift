@@ -24,7 +24,7 @@ struct ExportPlaylistButtonView: View {
       
       Group {
         if showToastAppleMusic {
-          ToastMessageView(message: "1~2분 후 Apple Music에서 확인하세요")
+          ToastMessageView(message: "곡의 개수에 따라 최대 2분까지 소요될 수 있습니다.")
         } else if showToastCapture {
           ToastMessageView(message: "캡쳐된 사진을 앨범에서 확인하세요")
         }

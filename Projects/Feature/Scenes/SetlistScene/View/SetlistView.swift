@@ -58,8 +58,8 @@ struct SetlistView: View {
       let musicList = vm.setlistSongName
       exportViewModel.addToAppleMusic(musicList: musicList, setlist: setlist)
     }), dismissButton: CustomAlertButton(title: "취소", action: {
-      vm.showModal.toggle()
-      exportViewModel.showAppleMusicAlert.toggle()
+      vm.showModal = false
+      exportViewModel.showAppleMusicAlert = false
     }),
                  isPresented: $exportViewModel.showAppleMusicAlert,
                  artistInfo: artistInfo,

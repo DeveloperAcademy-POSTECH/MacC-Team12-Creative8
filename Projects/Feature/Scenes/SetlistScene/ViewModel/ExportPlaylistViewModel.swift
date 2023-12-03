@@ -80,8 +80,7 @@ final class ExportPlaylistViewModel: ObservableObject {
   }
   
   func checkMusicKitPermission() -> Bool {
-    var status: MusicAuthorization.Status = .notDetermined
-    status = MusicAuthorization.currentStatus
+    var status = MusicAuthorization.currentStatus
     return status == .denied || status == .notDetermined
   }
   
@@ -93,7 +92,7 @@ final class ExportPlaylistViewModel: ObservableObject {
     )
     self.showAppleMusicAlert = false
     self.showToastMessageAppleMusic = true
-    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
       self.showToastMessageAppleMusic = false
       self.openMusicApp(url: MusicURL.AppleMusic)
     }
@@ -106,10 +105,8 @@ final class ExportPlaylistViewModel: ObservableObject {
       self.showMusicSettingsAlert = true
     } else {
       CheckAppleMusicSubscription.shared.appleMusicSubscription()
-      if CheckAppleMusicSubscription.shared.getCheckValue() {
-        self.showAppleMusicAlert.toggle()
-        self.playlistTitle = ""
-      }
+      self.showAppleMusicAlert = true
+      self.playlistTitle = ""
     }
   }
   
