@@ -91,9 +91,9 @@ public final class ArtistDataManager {
   private func findArtistIdAndImage(artistInfo: ArtistInfo, hits: [Hit]) -> ArtistInfo {
     for hit in hits {
       if let name = hit.result?.primaryArtist?.name {
-        let filteredName = stringFilter(name)
-        let filteredArtistName = stringFilter(artistInfo.name)
-        let filteredArtistAlias = stringFilter(artistInfo.alias ?? "")
+        let filteredName = stringFilter(name).lowercased()
+        let filteredArtistName = stringFilter(artistInfo.name).lowercased()
+        let filteredArtistAlias = stringFilter(artistInfo.alias ?? "").lowercased()
         
         if removeFirstParentheses(from: filteredName) == filteredArtistName ||
             extractTextInsideFirstParentheses(from: filteredName) == filteredArtistName ||
