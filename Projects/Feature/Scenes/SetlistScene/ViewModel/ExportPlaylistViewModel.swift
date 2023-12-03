@@ -36,23 +36,23 @@ final class ExportPlaylistViewModel: ObservableObject {
   }
   
   func requestPhotoLibraryPermission() {
-      PHPhotoLibrary.requestAuthorization { status in
-          switch status {
-          case .authorized:
-              // 권한이 허용된 경우
-              print("Photo library access granted")
-          case .denied, .restricted:
-              // 권한이 거부되거나 제한된 경우
-              print("Photo library access denied")
-          case .notDetermined:
-              // 권한이 아직 결정되지 않은 경우
-              print("Photo library access not determined")
-          case .limited:
-            print("Photo library access limited")
-          @unknown default:
-              print("omg")
-          }
+    PHPhotoLibrary.requestAuthorization { status in
+      switch status {
+      case .authorized:
+        // 권한이 허용된 경우
+        print("Photo library access granted")
+      case .denied, .restricted:
+        // 권한이 거부되거나 제한된 경우
+        print("Photo library access denied")
+      case .notDetermined:
+        // 권한이 아직 결정되지 않은 경우
+        print("Photo library access not determined")
+      case .limited:
+        print("Photo library access limited")
+      @unknown default:
+        print("omg")
       }
+    }
   }
   
   func getPhotoLibraryPermissionStatus() -> PHAuthorizationStatus {
@@ -95,6 +95,7 @@ final class ExportPlaylistViewModel: ObservableObject {
     self.showToastMessageAppleMusic = true
     DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
       self.showToastMessageAppleMusic = false
+      self.openMusicApp()
     }
   }
   
@@ -122,10 +123,22 @@ final class ExportPlaylistViewModel: ObservableObject {
         let youtubeService = YoutubeService().createYouTubeService(user: user)
         YoutubeService().createPlaylist(
           service: youtubeService,
-          title: self.playlistTitle, 
+          title: self.playlistTitle,
           musicList: musicList
         )
         self.showYouTubeAlert = false
+      }
+    }
+  }
+  
+  private func openMusicApp() {
+    let url = URL(string: "https://music.apple.com/")!
+    if UIApplication.shared.canOpenURL(url) {
+      if #available(iOS 16.0, *) {
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        
+      } else {
+        UIApplication.shared.openURL(url)
       }
     }
   }

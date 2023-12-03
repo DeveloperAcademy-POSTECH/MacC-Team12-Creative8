@@ -61,10 +61,10 @@ struct SetlistView: View {
       vm.showModal.toggle()
       exportViewModel.showAppleMusicAlert.toggle()
     }),
-       isPresented: $exportViewModel.showAppleMusicAlert,
-       artistInfo: artistInfo,
-       setlist: setlist,
-       exportViewModel: exportViewModel
+                 isPresented: $exportViewModel.showAppleMusicAlert,
+                 artistInfo: artistInfo,
+                 setlist: setlist,
+                 exportViewModel: exportViewModel
     )
     .customAlert(primaryButton: CustomAlertButton(title: "확인", action: {
       let musicList = vm.setlistSongName
@@ -73,10 +73,10 @@ struct SetlistView: View {
       vm.showModal.toggle()
       exportViewModel.showYouTubeAlert.toggle()
     }),
-     isPresented: $exportViewModel.showYouTubeAlert,
-     artistInfo: artistInfo,
-     setlist: setlist,
-     exportViewModel: exportViewModel
+                 isPresented: $exportViewModel.showYouTubeAlert,
+                 artistInfo: artistInfo,
+                 setlist: setlist,
+                 exportViewModel: exportViewModel
     )
     .toolbar(.hidden, for: .tabBar)
     .navigationBarTitleDisplayMode(.inline)

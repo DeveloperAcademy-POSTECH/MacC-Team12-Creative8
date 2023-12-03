@@ -12,6 +12,7 @@ import StoreKit
 
 public final class AppleMusicService: MusicPlaylistAddable, Sendable {
   public var id: MusicItemID = ""
+  public var isMusicApp: Bool = false
   
   public init() {
   }
@@ -36,6 +37,7 @@ public final class AppleMusicService: MusicPlaylistAddable, Sendable {
           // 순차적으로 MusicLibrary에 추가
           try await MusicLibrary.shared.add(song, to: newPlayList)
         }
+        isMusicApp = true
       }
     }
   }
