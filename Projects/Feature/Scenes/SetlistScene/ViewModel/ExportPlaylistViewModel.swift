@@ -95,7 +95,7 @@ final class ExportPlaylistViewModel: ObservableObject {
     self.showToastMessageAppleMusic = true
     DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
       self.showToastMessageAppleMusic = false
-      self.openMusicApp()
+      self.openMusicApp(url: MusicURL.AppleMusic)
     }
   }
   
@@ -109,8 +109,6 @@ final class ExportPlaylistViewModel: ObservableObject {
       if CheckAppleMusicSubscription.shared.getCheckValue() {
         self.showAppleMusicAlert.toggle()
         self.playlistTitle = ""
-      } else {
-        
       }
     }
   }
@@ -127,12 +125,15 @@ final class ExportPlaylistViewModel: ObservableObject {
           musicList: musicList
         )
         self.showYouTubeAlert = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+          self.openMusicApp(url: MusicURL.Youtube)
+        }
       }
     }
   }
   
-  private func openMusicApp() {
-    let url = URL(string: "https://music.apple.com/")!
+  func openMusicApp(url: String) {
+    let url = URL(string: url)!
     if UIApplication.shared.canOpenURL(url) {
       if #available(iOS 16.0, *) {
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
@@ -141,5 +142,11 @@ final class ExportPlaylistViewModel: ObservableObject {
         UIApplication.shared.openURL(url)
       }
     }
+  }
+  
+  public enum MusicURL {
+    public static let AppleMusic = "https://music.apple.com/"
+    public static let Youtube = "https://www.youtube.com/"
+    public static let Spotify = "https://open.spotify.com/"
   }
 }

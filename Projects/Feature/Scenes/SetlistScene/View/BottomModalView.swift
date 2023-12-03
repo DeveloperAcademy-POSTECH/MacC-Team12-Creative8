@@ -58,9 +58,9 @@ struct BottomModalView: View {
         
         Spacer()
           .frame(width: 14)
-          platformButtonView(title: "Youtube Music", image: "youtubeMusic") {
+        platformButtonView(title: "Youtube Music", image: "youtubeMusic") {
           exportViewModel.showYouTubeAlert = true
-            vm.showModal = false
+          vm.showModal = false
         }
         
         Spacer()
@@ -74,13 +74,16 @@ struct BottomModalView: View {
             platformButtonView(title: "Spotify", image: "spotify") {
               spotifyService.performPlaylistCreation(artistName: artistInfo?.name, eventDate: setlist?.eventDate, songList: vm.setlistSongKoreanName)
               vm.showModal.toggle()
+              DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                exportViewModel.openMusicApp(url: ExportPlaylistViewModel.MusicURL.Spotify)
+              }
             }
           }
         }.onOpenURL(perform: spotifyService.handleURL(_:))
       }
       
       Spacer()
-            
+      
       listRowView(
         title: "플레이리스트용 캡쳐하기",
         topDescription: "Bugs, FLO, genie, VIBE의 유저이신가요?", bottomDescription: "OCR 서비스를 사용해 캡쳐만으로 플레이리스트를 만들어보세요.",
