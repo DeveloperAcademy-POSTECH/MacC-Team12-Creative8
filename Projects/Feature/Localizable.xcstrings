@@ -1,16 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "\n" : {
-      "localizations" : {
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        }
-      }
-    },
     " " : {
       "localizations" : {
         "ko" : {
@@ -220,22 +210,6 @@
         }
       }
     },
-    "Apple Music으로 내보내기" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Export to Apple Music"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Apple Music으로 내보내기"
-          }
-        }
-      }
-    },
     "Bugs, FLO, genie, VIBE의 유저이신가요?" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -290,7 +264,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Create a playlist with only capture using the OCR service."
+            "value" : "Upload the screenshot to OCR supporting apps to export."
           }
         },
         "ko" : {
@@ -432,6 +406,23 @@
         }
       }
     },
+    "곡의 개수에 따라 최대 2분까지 소요될 수 있습니다." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Depending on the number of songs, it may take up to 2 minutes."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "곡의 개수에 따라 최대 2분까지 소요될 수 있습니다."
+          }
+        }
+      }
+    },
     "공연" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -455,7 +446,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Quickly access concert and setlist information"
+            "value" : "It will help you to check out their setlist easier."
           }
         },
         "ko" : {
@@ -537,7 +528,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bookmark the performances you are interested in"
+            "value" : "Bookmark any shows you like."
           }
         },
         "ko" : {
@@ -570,7 +561,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Like your favorite artists you are interested in"
+            "value" : "Like the artist."
           }
         },
         "ko" : {
@@ -965,7 +956,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Any setlist information yet"
+            "value" : "No songs in this setlist yet"
           }
         },
         "ko" : {
@@ -981,7 +972,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No setlist information"
+            "value" : "Sorry, there are no songs"
           }
         },
         "ko" : {
@@ -1227,7 +1218,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The moment the music connects,"
+            "value" : "The moment we connect to music,"
           }
         },
         "ko" : {
@@ -1608,7 +1599,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Please select the app to export the playlist"
+            "value" : "Please select the app to export setlist to your playlist"
           }
         },
         "ko" : {
@@ -1625,7 +1616,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Capture for playlist"
+            "value" : "Screenshot for OCR service "
           }
         },
         "ko" : {
