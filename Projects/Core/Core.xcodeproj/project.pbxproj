@@ -19,8 +19,8 @@
 		69D98149906D9BADA35F12D9 /* YoutubeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F25EABEE67D0E59820DF84 /* YoutubeService.swift */; };
 		882E5DBFC616F2C001A621AA /* ArtistDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7A053F3B85B42931EE002B /* ArtistDataManager.swift */; };
 		8FA0920398EC647EC4B21451 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2623E283DF2E5382F8E9EA4 /* OnboardingModel.swift */; };
-		90BB12D3ECA58DF4FEE94782 /* Pods_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D6383C064267B997B2B07FE /* Pods_Core.framework */; };
 		9AC823A1A6AD6300B6EBE04A /* SetlistDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E8FD75EE835B93B68B559F /* SetlistDataService.swift */; };
+		B27C8167F1198BBB47242FE0 /* Pods_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C4DBEECFF7E7FB5AA2AD00 /* Pods_Core.framework */; };
 		B5AEB3196F16E3C52EC16288 /* SwiftDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7A7F738C7D540C1FDA072E /* SwiftDataManager.swift */; };
 		B645CCCA0479111367499779 /* AppleMusicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C004E9629A66EFA763B287E6 /* AppleMusicService.swift */; };
 		B6B2E5BD39B2856B9DE9966C /* SaveSetlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143BA5525B0777162DED185D /* SaveSetlist.swift */; };
@@ -77,17 +77,17 @@
 		3987D3B9B389368A5B5AF548 /* ArtistInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistInfoModel.swift; sourceTree = "<group>"; };
 		3CF4F12A755C30296E33F86F /* KoreanConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanConverter.swift; sourceTree = "<group>"; };
 		3E313EC3E53C9ED17660FD3F /* CoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		48C4DBEECFF7E7FB5AA2AD00 /* Pods_Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B7A7F738C7D540C1FDA072E /* SwiftDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataManager.swift; sourceTree = "<group>"; };
-		4D6383C064267B997B2B07FE /* Pods_Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F5F16996E458A8A1147E2AE /* ArchivedConcertInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedConcertInfo.swift; sourceTree = "<group>"; };
 		521DFD8C0C6556F13D1C19CA /* SpotifyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyService.swift; sourceTree = "<group>"; };
 		569CF2C676DD875C163323FA /* ArtistFetchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistFetchService.swift; sourceTree = "<group>"; };
-		591914E0A6438B3C6B4A67D0 /* Pods-Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.release.xcconfig"; path = "Target Support Files/Pods-Core/Pods-Core.release.xcconfig"; sourceTree = "<group>"; };
+		6FA57B608B07E5E80340C98C /* Pods-Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.release.xcconfig"; path = "Target Support Files/Pods-Core/Pods-Core.release.xcconfig"; sourceTree = "<group>"; };
 		752E25910681A644F3142B68 /* LikeArtistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeArtistModel.swift; sourceTree = "<group>"; };
 		75600AD4887E89C2223BF659 /* SetlistListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetlistListModel.swift; sourceTree = "<group>"; };
 		845DD837E5346A7627964873 /* SaveArtistInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveArtistInfo.swift; sourceTree = "<group>"; };
+		8B047DBE7E4289BDDF680C2B /* Pods-Core.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.debug.xcconfig"; path = "Target Support Files/Pods-Core/Pods-Core.debug.xcconfig"; sourceTree = "<group>"; };
 		8B667B36D9B1DD2BBFB353DB /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
-		904A7022E8CA62B75C7825BF /* Pods-Core.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.debug.xcconfig"; path = "Target Support Files/Pods-Core/Pods-Core.debug.xcconfig"; sourceTree = "<group>"; };
 		A03512B6F11F4C7FDA6C687A /* ArtistListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistListModel.swift; sourceTree = "<group>"; };
 		B2623E283DF2E5382F8E9EA4 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		B6C777C1122A5B5702FCADF8 /* GeniusArtistsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeniusArtistsModel.swift; sourceTree = "<group>"; };
@@ -107,7 +107,7 @@
 				E7494D59CF3A2D7FFFEE3DA2 /* KeychainAccess in Frameworks */,
 				51B1D4ED7ECB508C4A97445F /* SpotifyAPI in Frameworks */,
 				25C534647B7B805047B8E0C3 /* GoogleSignIn in Frameworks */,
-				90BB12D3ECA58DF4FEE94782 /* Pods_Core.framework in Frameworks */,
+				B27C8167F1198BBB47242FE0 /* Pods_Core.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +122,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02FDAC933655D04F894EF812 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8B047DBE7E4289BDDF680C2B /* Pods-Core.debug.xcconfig */,
+				6FA57B608B07E5E80340C98C /* Pods-Core.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../../Pods;
+			sourceTree = "<group>";
+		};
 		1D24A802930D16A11D426C90 /* ArtistInfoModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,26 +205,16 @@
 				E12816BA35F79D21E0D77318 /* Project */,
 				64E34141D18153ACC8D4E5F8 /* Frameworks */,
 				250C62EE12DB56ECEBB473C3 /* Products */,
-				66B67B8CC55355E618524B47 /* Pods */,
+				02FDAC933655D04F894EF812 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
 		64E34141D18153ACC8D4E5F8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4D6383C064267B997B2B07FE /* Pods_Core.framework */,
+				48C4DBEECFF7E7FB5AA2AD00 /* Pods_Core.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		66B67B8CC55355E618524B47 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				904A7022E8CA62B75C7825BF /* Pods-Core.debug.xcconfig */,
-				591914E0A6438B3C6B4A67D0 /* Pods-Core.release.xcconfig */,
-			);
-			name = Pods;
-			path = ../../Pods;
 			sourceTree = "<group>";
 		};
 		81104ECEC5CD1B0F5111557B /* Sources */ = {
@@ -303,7 +303,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 98830250AF7B3CEC34690D43 /* Build configuration list for PBXNativeTarget "Core" */;
 			buildPhases = (
-				58C05122FB0AAE78DC858B2A /* [CP] Check Pods Manifest.lock */,
+				5603B64C0DE669DF3FB71B9B /* [CP] Check Pods Manifest.lock */,
 				68E9A351E4B1C8B9C155F97C /* Sources */,
 				3FEE3D1A9FD48DDE5D5CDD8B /* Resources */,
 				2A34CD9447D0001C8C98AEF5 /* Embed Frameworks */,
@@ -376,7 +376,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		58C05122FB0AAE78DC858B2A /* [CP] Check Pods Manifest.lock */ = {
+		5603B64C0DE669DF3FB71B9B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -611,7 +611,7 @@
 		};
 		C6F0DD24793DC9075B33338B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 904A7022E8CA62B75C7825BF /* Pods-Core.debug.xcconfig */;
+			baseConfigurationReference = 8B047DBE7E4289BDDF680C2B /* Pods-Core.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -646,7 +646,7 @@
 		};
 		F2BF94242B2654F7A820405E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 591914E0A6438B3C6B4A67D0 /* Pods-Core.release.xcconfig */;
+			baseConfigurationReference = 6FA57B608B07E5E80340C98C /* Pods-Core.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;

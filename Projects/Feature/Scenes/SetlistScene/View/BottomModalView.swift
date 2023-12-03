@@ -58,12 +58,14 @@ struct BottomModalView: View {
         
         Spacer()
           .frame(width: 14)
+        
           platformButtonView(title: "Youtube Music", image: "youtubeMusic") {
           exportViewModel.showYouTubeAlert = true
             vm.showModal = false
         }
         
         Spacer()
+          .frame(width: 14)
         
         Group {
           if !spotifyService.isAuthorized {
