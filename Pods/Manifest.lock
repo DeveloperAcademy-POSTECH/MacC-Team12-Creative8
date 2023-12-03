@@ -9,19 +9,23 @@ PODS:
   - GTMSessionFetcher/Core (3.1.1)
   - GTMSessionFetcher/Full (3.1.1):
     - GTMSessionFetcher/Core
+  - SwiftUIIntrospect (1.1.1)
 
 DEPENDENCIES:
   - GoogleAPIClientForREST/YouTube (~> 1.2.1)
+  - SwiftUIIntrospect (~> 1.0)
 
 SPEC REPOS:
   trunk:
     - GoogleAPIClientForREST
     - GTMSessionFetcher
+    - SwiftUIIntrospect
 
 SPEC CHECKSUMS:
   GoogleAPIClientForREST: a8b95a252014ce2e618df6b75dc72eca2c00b4af
   GTMSessionFetcher: e8647203b65cee28c5f73d0f473d096653945e72
+  SwiftUIIntrospect: db5290a3492424eb4afcab77cebcd4595de3bd71
 
-PODFILE CHECKSUM: a39bea8812ac59a469682e60454ab8941f37f1f1
+PODFILE CHECKSUM: cd3fc47f65fca7c9498432997d83216dc885e8a2
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.13.0

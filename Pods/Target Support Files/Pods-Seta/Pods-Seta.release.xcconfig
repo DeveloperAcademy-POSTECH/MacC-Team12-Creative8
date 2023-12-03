@@ -1,10 +1,13 @@
+ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
 CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher" "${PODS_CONFIGURATION_BUILD_DIR}/GoogleAPIClientForREST"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher" "${PODS_CONFIGURATION_BUILD_DIR}/GoogleAPIClientForREST" "${PODS_CONFIGURATION_BUILD_DIR}/SwiftUIIntrospect"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1 $(inherited) GTLR_USE_FRAMEWORK_IMPORTS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework/Headers"
-LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework/Headers" -isystem "${PODS_CONFIGURATION_BUILD_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework/Headers" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/GoogleAPIClientForREST"
-OTHER_LDFLAGS = $(inherited) -framework "GTMSessionFetcher" -framework "GoogleAPIClientForREST" -framework "Security"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SwiftUIIntrospect/SwiftUIIntrospect.framework/Headers"
+LD_RUNPATH_SEARCH_PATHS = $(inherited) /usr/lib/swift '@executable_path/Frameworks' '@loader_path/Frameworks'
+LIBRARY_SEARCH_PATHS = $(inherited) "${TOOLCHAIN_DIR}/usr/lib/swift/${PLATFORM_NAME}" /usr/lib/swift
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework/Headers" -isystem "${PODS_CONFIGURATION_BUILD_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework/Headers" -isystem "${PODS_CONFIGURATION_BUILD_DIR}/SwiftUIIntrospect/SwiftUIIntrospect.framework/Headers" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/GoogleAPIClientForREST" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/SwiftUIIntrospect"
+OTHER_LDFLAGS = $(inherited) -framework "GTMSessionFetcher" -framework "GoogleAPIClientForREST" -framework "Security" -framework "SwiftUIIntrospect"
+OTHER_SWIFT_FLAGS = $(inherited) -D COCOAPODS
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_PODFILE_DIR_PATH = ${SRCROOT}/../..

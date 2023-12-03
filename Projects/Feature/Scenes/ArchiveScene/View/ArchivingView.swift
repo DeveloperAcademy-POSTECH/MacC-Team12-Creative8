@@ -11,6 +11,7 @@ import SwiftData
 import Core
 import UI
 import Combine
+import SwiftUIIntrospect
 
 struct ArchivingView: View {
   @Binding var selectedTab: Tab
@@ -24,7 +25,7 @@ struct ArchivingView: View {
     NavigationStack(path: $tabViewManager.pageStack) {
       VStack {
         segmentedButtonsView
-          .padding(.horizontal, 24)
+          .padding(.horizontal, margin(for: UIWidth))
           .padding(.vertical)
         if viewModel.selectSegment == .bookmark {
           bookmarkView
