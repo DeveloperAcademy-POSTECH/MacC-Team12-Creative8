@@ -131,7 +131,7 @@ extension ArchivingView {
           ArchiveConcertInfoCell(selectedTab: $selectedTab, info: item)
           Divider()
             .foregroundStyle(Color.lineGrey1)
-          .padding(.horizontal, 20)
+            .padding(.horizontal, UIWidth * 0.049)
         }
       }
     }
@@ -213,3 +213,5 @@ extension ArchivingView {
     }
   }
 }
+
+
