@@ -24,7 +24,7 @@ struct SearchArtistCell: View {
         AsyncImage(url: URL(string: imageURL)) { phase in
           switch phase {
           case .empty:
-            RoundedRectangle(cornerRadius: 20)
+            RoundedRectangle(cornerRadius: 12)
               .foregroundStyle(Color.mainGrey1)
               .overlay(
                 Image("ticket", bundle: setaBundle)
@@ -39,7 +39,7 @@ struct SearchArtistCell: View {
               .resizable()
               .scaledToFill()
           case .failure:
-            RoundedRectangle(cornerRadius: 20)
+            RoundedRectangle(cornerRadius: 12)
               .foregroundStyle(Color.mainGrey1)
               .overlay(
                 Image("ticket", bundle: setaBundle)

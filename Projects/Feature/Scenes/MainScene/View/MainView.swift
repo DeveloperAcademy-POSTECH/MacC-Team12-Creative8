@@ -44,19 +44,24 @@ public struct MainView: View {
       .background(Color.backgroundWhite)
       .onAppear {
         dataManager.modelContext = modelContext
-        var idx = 0
         if viewModel.setlists[0] == nil {
-          for artist in likeArtists {
-            viewModel.getSetlistsFromSetlistFM(artistMbid: artist.artistInfo.mbid, idx: idx)
-            idx += 1
+          var idx = likeArtists.count-1
+          for artist in likeArtists.reversed() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+              viewModel.getSetlistsFromSetlistFM(artistMbid: artist.artistInfo.mbid, idx: idx)
+              idx -= 1
+            }
           }
         }
+        
       }
       .onChange(of: likeArtists) { _, newValue in
-        var idx = 0
-        for artist in newValue {
-          viewModel.getSetlistsFromSetlistFM(artistMbid: artist.artistInfo.mbid, idx: idx)
-          idx += 1
+        var idx = likeArtists.count-1
+        for artist in likeArtists.reversed() {
+          DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            viewModel.getSetlistsFromSetlistFM(artistMbid: artist.artistInfo.mbid, idx: idx)
+            idx -= 1
+          }
         }
       }
       .navigationDestination(for: NavigationDelivery.self) { value in
@@ -87,7 +92,7 @@ public struct MainView: View {
   public var artistNameScrollView: some View {
     ScrollView(.horizontal) {
       ScrollViewReader { scrollViewProxy in
-        HStack(spacing: UIWidth * 0.12) {
+        HStack(spacing: UIWidth * 0.13) {
           ForEach(Array(likeArtists.enumerated().prefix(5)), id: \.offset) { index, data in
             let artistName = viewModel.replaceFirstSpaceWithNewline(data.artistInfo.name)
             ArtistNameView(selectedTab: $selectedTab,
@@ -127,7 +132,7 @@ public struct MainView: View {
       }
     }
     .scrollIndicators(.hidden)
-    .safeAreaPadding(.leading, UIWidth * 0.094)
+    .safeAreaPadding(.leading, UIWidth * 0.1)
   }
   public var artistContentView: some View {
     ScrollView(.horizontal) {
@@ -141,7 +146,7 @@ public struct MainView: View {
     .scrollTargetBehavior(.viewAligned)
     .scrollIndicators(.hidden)
     .scrollPosition(id: $viewModel.scrollToIndex)
-    .safeAreaPadding(.horizontal, UIWidth * 0.092)
+    .safeAreaPadding(.horizontal, UIWidth * 0.09)
     .safeAreaPadding(.trailing, UIWidth * 0.005)
   }
 }

@@ -64,6 +64,7 @@ struct BottomModalView: View {
         }
         
         Spacer()
+          .frame(width: 14)
         
         Group {
           if !spotifyService.isAuthorized {

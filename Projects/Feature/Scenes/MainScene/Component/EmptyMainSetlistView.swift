@@ -21,47 +21,51 @@ struct EmptyMainSetlistView: View {
   var body: some View {
     VStack(alignment: .leading, spacing: 0) {
       Spacer()
-      Text("세트리스트 정보가 없습니다.")
-        .font(.system(size: 16))
-        .fontWeight(.semibold)
-        .foregroundStyle(Color.mainBlack)
+      Group {
+        Text("세트리스트 정보가 없습니다.")
+          .font(.system(size: 16))
+          .fontWeight(.semibold)
+          .foregroundStyle(Color.mainBlack)
         .multilineTextAlignment(.leading)
-      
-      Text("찜한 가수의 세트리스트가 없다면,")
-        .foregroundStyle(Color.fontGrey2)
-        .font(.footnote)
-        .padding(.top)
-        .multilineTextAlignment(.leading)
-      
-      if viewModel.isKorean() {
-        HStack(spacing: 0) {
-          Link(destination: URL(string: "https://www.setlist.fm")!) {
-            Text("Setlist.fm")
-              .underline()
+        
+        Text("찜한 가수의 세트리스트가 없다면,")
+          .foregroundStyle(Color.fontGrey2)
+          .font(.footnote)
+          .padding(.top)
+          .multilineTextAlignment(.leading)
+        
+        if viewModel.isKorean() {
+          HStack(spacing: 0) {
+            Link(destination: URL(string: "https://www.setlist.fm")!) {
+              Text("Setlist.fm")
+                .underline()
+                .foregroundStyle(Color.fontGrey2)
+                .font(.footnote)
+            }
+            Text("에서 직접 추가할 수 있어요.")
               .foregroundStyle(Color.fontGrey2)
               .font(.footnote)
+              .multilineTextAlignment(.leading)
           }
-          Text("에서 직접 추가할 수 있어요.")
-            .foregroundStyle(Color.fontGrey2)
-            .font(.footnote)
-            .multilineTextAlignment(.leading)
-        }
-        .padding(.bottom)
-      } else {
-        HStack(spacing: 0) {
-          Text("에서 직접 추가할 수 있어요.")
-                      .foregroundStyle(Color.fontGrey2)
-                      .font(.footnote)
-                      .multilineTextAlignment(.leading)
-          Link(destination: URL(string: "https://www.setlist.fm")!) {
-            Text("Setlist.fm")
-              .underline()
-              .foregroundStyle(Color.fontGrey2)
-              .font(.footnote)
+          .padding(.bottom)
+        } else {
+          HStack(spacing: 0) {
+            Text("에서 직접 추가할 수 있어요.")
+                        .foregroundStyle(Color.fontGrey2)
+                        .font(.footnote)
+                        .multilineTextAlignment(.leading)
+            Link(destination: URL(string: "https://www.setlist.fm")!) {
+              Text("Setlist.fm")
+                .underline()
+                .foregroundStyle(Color.fontGrey2)
+                .font(.footnote)
+            }
           }
+          .padding(.bottom)
         }
-        .padding(.bottom)
       }
+      .padding(.horizontal, 3)
+
       Link(destination: URL(string: "https://www.setlist.fm")!) {
         RoundedRectangle(cornerRadius: 14)
           .foregroundStyle(Color.mainGrey1)

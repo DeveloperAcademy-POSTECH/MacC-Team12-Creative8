@@ -15,13 +15,15 @@ let project = Project.makeModule(
   packages: [
     .CoreXLSX,
     .Firebase,
-    .GoogleSignIn
+    .GoogleSignIn,
+//    .Introspect
   ],
   dependencies: [
     .Projcet.Feature,
     .SPM.CoreXLSX,
     .SPM.Firebase,
-    .SPM.GoogleSignIn
+    .SPM.GoogleSignIn,
+//    .SPM.Introspect
   ],
   sources: ["Sources/**"],
   resources: ["Resources/**"],

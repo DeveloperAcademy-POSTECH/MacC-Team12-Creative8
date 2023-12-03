@@ -29,7 +29,7 @@ struct ArtistsContentView: View {
             commentText
             artistSetlistCells  // 세트리스트 불러오는화면과 세트리스트가 없는 화면
           }
-          .padding(.horizontal, 2)
+          .padding(.horizontal, 3)
           .scrollTransition(.animated.threshold(.visible(0.5))) { content, phase in
             content
               .opacity(phase.isIdentity ? 1 : 0)

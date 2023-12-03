@@ -74,7 +74,7 @@ struct SearchView: View {
   private var artistView: some View {
     VStack(alignment: .leading) {
       domesticArtistView
-        .padding(.top, 44)
+        .padding(.top, 27)
         .padding(.bottom, 64)
       foreignArtistView
         .padding(.bottom, 48)

@@ -11,19 +11,23 @@ project 'Projects/UI/UI.xcodeproj'
 target 'Seta' do
    project 'Projects/App/Seta.xcodeproj'
    pod 'GoogleAPIClientForREST/YouTube', '~> 1.2.1'
+pod 'SwiftUIIntrospect', '~> 1.0'
 end
 
 target 'Core' do
    project 'Projects/Core/Core.xcodeproj'
    pod 'GoogleAPIClientForREST/YouTube', '~> 1.2.1'
+pod 'SwiftUIIntrospect', '~> 1.0'
 end
 
 target 'Feature' do
    project 'Projects/Feature/Feature.xcodeproj'
    pod 'GoogleAPIClientForREST/YouTube', '~> 1.2.1'
+pod 'SwiftUIIntrospect', '~> 1.0'
 end
 
 target 'UI' do
    project 'Projects/UI/UI.xcodeproj'
    pod 'GoogleAPIClientForREST/YouTube', '~> 1.2.1'
+pod 'SwiftUIIntrospect', '~> 1.0'
 end

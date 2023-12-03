@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,7 +23,7 @@
 		B5AEB3196F16E3C52EC16288 /* SwiftDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7A7F738C7D540C1FDA072E /* SwiftDataManager.swift */; };
 		B645CCCA0479111367499779 /* AppleMusicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C004E9629A66EFA763B287E6 /* AppleMusicService.swift */; };
 		B6B2E5BD39B2856B9DE9966C /* SaveSetlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143BA5525B0777162DED185D /* SaveSetlist.swift */; };
-		BC8595A1E286E2F5B6EF15C9 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B0FA7F85F3573FB522F9478 /* Core.framework */; };
+		BC8595A1E286E2F5B6EF15C9 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B0FA7F85F3573FB522F9478 /* Core.framework */; platformFilter = ios; };
 		BE88C80EC8D00DCDF2A8E2C8 /* ArtistInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3987D3B9B389368A5B5AF548 /* ArtistInfoModel.swift */; };
 		C02E3727AAC96A78D3D6B7BD /* Pods_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3740FBECE4CD52D4D55A460B /* Pods_Core.framework */; };
 		CFCE7846B7A050A6A39745F3 /* ArchivedConcertInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5F16996E458A8A1147E2AE /* ArchivedConcertInfo.swift */; };
@@ -88,6 +88,8 @@
 		75600AD4887E89C2223BF659 /* SetlistListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetlistListModel.swift; sourceTree = "<group>"; };
 		845DD837E5346A7627964873 /* SaveArtistInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveArtistInfo.swift; sourceTree = "<group>"; };
 		8B667B36D9B1DD2BBFB353DB /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
+		9622FC3617332DB099992B86 /* Pods-Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.release.xcconfig"; path = "Target Support Files/Pods-Core/Pods-Core.release.xcconfig"; sourceTree = "<group>"; };
+		9C6BFA0623D8C7D801EFADD4 /* Pods-Core.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.debug.xcconfig"; path = "Target Support Files/Pods-Core/Pods-Core.debug.xcconfig"; sourceTree = "<group>"; };
 		A03512B6F11F4C7FDA6C687A /* ArtistListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistListModel.swift; sourceTree = "<group>"; };
 		B2623E283DF2E5382F8E9EA4 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		B6C777C1122A5B5702FCADF8 /* GeniusArtistsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeniusArtistsModel.swift; sourceTree = "<group>"; };
@@ -329,13 +331,12 @@
 		83ADD9484DDC11E75E9F182F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = com.creative8.seta;
 				TargetAttributes = {
 				};
 			};
 			buildConfigurationList = 4EBE82DE9849E8F47BAECD7B /* Build configuration list for PBXProject "Core" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -517,7 +518,6 @@
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
@@ -541,7 +541,6 @@
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -633,7 +632,6 @@
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -668,7 +666,6 @@
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;

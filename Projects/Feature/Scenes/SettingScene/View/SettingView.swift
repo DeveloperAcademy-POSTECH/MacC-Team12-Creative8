@@ -63,7 +63,7 @@ public struct SettingView: View {
             })
           }
         }
-        .padding(.horizontal, 25)
+        .padding(.horizontal, margin(for: UIWidth))
         .padding(.vertical)
       }
       .scrollIndicators(.hidden)
@@ -112,7 +112,6 @@ struct SetlistfmLinkButton: View {
       .background(Color.mainGrey1)
       .foregroundStyle(Color.mainBlack)
       .clipShape(RoundedRectangle(cornerRadius: 14))
-      .padding(.horizontal, 7)
     })
   }
 }
@@ -140,4 +139,10 @@ struct LinkLabelView: View {
   NavigationStack {
     SettingView()
   }
+}
+
+
+public func margin(for width: Double) -> Double {
+  guard !width.isZero else { return 0 }
+  return width >= 414 ? 20 : 16
 }

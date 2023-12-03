@@ -11,6 +11,7 @@ import SwiftData
 import Core
 import UI
 import Combine
+import SwiftUIIntrospect
 
 struct ArchivingView: View {
   @Binding var selectedTab: Tab
@@ -24,7 +25,7 @@ struct ArchivingView: View {
     NavigationStack(path: $tabViewManager.pageStack) {
       VStack {
         segmentedButtonsView
-          .padding(.horizontal, 24)
+          .padding(.horizontal, margin(for: UIWidth))
           .padding(.vertical)
         if viewModel.selectSegment == .bookmark {
           bookmarkView
@@ -130,7 +131,7 @@ extension ArchivingView {
           ArchiveConcertInfoCell(selectedTab: $selectedTab, info: item)
           Divider()
             .foregroundStyle(Color.lineGrey1)
-          .padding(.horizontal, 20)
+            .padding(.horizontal, UIWidth * 0.049)
         }
       }
     }
@@ -174,6 +175,7 @@ extension ArchivingView {
           .scrollIndicators(.hidden)
           .listStyle(.plain)
           .padding(EdgeInsets(top: -10, leading: -18, bottom: 10, trailing: -18))
+          .padding(.horizontal, margin(for: UIWidth))
           .onReceive(tabViewManager.$scrollToTop) { _ in
             withAnimation {
               proxy.scrollTo(topID)
@@ -182,7 +184,7 @@ extension ArchivingView {
         }
       }
     }
-    .padding(.horizontal, 24)
+    //.padding(.horizontal, 24)
   }
   
   private var artistListView: some View {
@@ -211,3 +213,5 @@ extension ArchivingView {
     }
   }
 }
+
+
