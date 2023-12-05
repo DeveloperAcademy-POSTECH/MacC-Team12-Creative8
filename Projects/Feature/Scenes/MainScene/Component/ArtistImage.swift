@@ -25,6 +25,8 @@ struct ArtistImage: View {
             image
               .resizable()
               .scaledToFill()
+              .frame(width: UIWidth * 0.81, height: UIWidth * 0.81)
+              .clipped()
               .overlay {
                 artistImageOverlayButton
                   .frame(width: UIWidth * 0.81, height: UIWidth * 0.81)
