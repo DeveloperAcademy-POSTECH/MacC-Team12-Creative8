@@ -67,13 +67,15 @@ final class SearchViewModel: ObservableObject {
   func getSearchArtistList() {
     self.isLoading = true
     Future<[MusicBrainzArtist], Error> { promise in
-      self.dataService.searchArtistsFromMusicBrainz(artistName: self.searchText) { result in
-        if let result = result {
-          promise(.success(result.artists ?? []))
-        } else {
-          promise(.failure(NSError(domain: "YourDomain", code: 1, userInfo: nil)))
-        }
-      }
+
+		 self.dataService.callRequest(type: ArtistListModel.self, api: .searchMusicBrainz(name: self.searchText)) { result in
+			 if let result = result {
+				promise(.success(result.artists ?? []))
+			 } else {
+				promise(.failure(NSError(domain: "YourDomain", code: 1, userInfo: nil)))
+			 }
+		 }
+
     }
     .receive(on: DispatchQueue.main)
     .sink { completion in

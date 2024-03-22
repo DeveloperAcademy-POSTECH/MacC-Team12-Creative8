@@ -20,49 +20,50 @@ public final class ArtistDataManager {
     var newArtistInfo: ArtistInfo = artistInfo
     var songList: [String] = []
     
-    dataService.searchArtistFromGenius(artistName: newArtistInfo.name ) { result in
-      if let result = result {
-        DispatchQueue.main.async {
-          newArtistInfo = self.findArtistIdAndImage(artistInfo: newArtistInfo, hits: result.response?.hits ?? [])
-          
-          self.fetchAllSongs(artistId: newArtistInfo.gid ?? 0) { result in
-            if let result = result {
-              songList = result
-              for song in songList {
-                parsedSongList.append(Titles(title: self.extractTextBeforeParentheses(from: song), subTitle: self.extractTextInsideFirstParentheses(from: song) ?? ""))
-              }
-              newArtistInfo.songList = parsedSongList
-              completion(newArtistInfo)
-            } else {
-              completion(nil)
-            }
-          }
-          completion(newArtistInfo)
-        }
-      } else {
-        completion(nil)
-      }
-    }
+	  dataService.callRequest(type: GeniusArtistsModel.self, api: .searchGenius(name: newArtistInfo.name)) { result in
+		  if let result = result {
+			 DispatchQueue.main.async {
+				newArtistInfo = self.findArtistIdAndImage(artistInfo: newArtistInfo, hits: result.response?.hits ?? [])
+
+				self.fetchAllSongs(artistId: newArtistInfo.gid ?? 0) { result in
+				  if let result = result {
+					 songList = result
+					 for song in songList {
+						parsedSongList.append(Titles(title: self.extractTextBeforeParentheses(from: song), subTitle: self.extractTextInsideFirstParentheses(from: song) ?? ""))
+					 }
+					 newArtistInfo.songList = parsedSongList
+					 completion(newArtistInfo)
+				  } else {
+					 completion(nil)
+				  }
+				}
+				completion(newArtistInfo)
+			 }
+		  } else {
+			 completion(nil)
+		  }
+	  }
   }
   
   private func fetchAllSongs(artistId: Int, completion: @escaping ([String]?) -> Void) {
     var songList: [String] = []
     
     func fetchPage(page: Int) {
-      dataService.fetchSongsFromGenius(artistId: artistId, page: page) { result in
-        guard let result = result, let songs = result.response?.songs else {
-          completion(nil)
-          return
-        }
-        for song in songs {
-          songList.append(song.title ?? "")
-        }
-        if let nextPage = result.response?.nextPage {
-          fetchPage(page: nextPage)
-        } else {
-          completion(songList)
-        }
-      }
+		 
+		 dataService.callRequest(type: GeniusSongsModel.self, api: .fetchSongGenius(artistID: artistId, page: page)) { result in
+			 guard let result = result, let songs = result.response?.songs else {
+				completion(nil)
+				return
+			 }
+			 for song in songs {
+				songList.append(song.title ?? "")
+			 }
+			 if let nextPage = result.response?.nextPage {
+				fetchPage(page: nextPage)
+			 } else {
+				completion(songList)
+			 }
+		 }
     }
     
     fetchPage(page: 1)

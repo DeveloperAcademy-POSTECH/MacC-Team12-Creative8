@@ -56,53 +56,58 @@ class ArtistViewModel: ObservableObject {
   func getSetlistsFromSetlistFM(artistMbid: String) {
     if self.setlists == nil {
       self.isLoadingSetlist = true
-      dataService.fetchSetlistsFromSetlistFM(artistMbid: artistMbid, page: page) { result in
-        if let result = result {
-          let filteredSetlists = result.setlist?.filter { 
-            $0.venue?.name != "SBS Inkigayo"
-            && $0.venue?.name != "M Countdown"
-            && $0.venue?.name != "Show! Music Core"
-            && $0.venue?.name != "KBS Music Bank"
-            && $0.venue?.name != "Show Champion"
-            && $0.venue?.name != "The Show"
-            && $0.venue?.name != "KBS Cool FM"
-          } ?? []
-          
-          DispatchQueue.main.async {
-            self.setlists = filteredSetlists
-            self.totalPage = Int((result.total ?? 1) / (result.itemsPerPage ?? 1) + 1)
-            self.isLoadingSetlist = false
-          }
-        } else {
-          self.isLoadingSetlist = false
-          print("Failed to fetch setlist data.")
-        }
-      }
+
+		 dataService.callRequest(type: SetlistListModel.self, api: .fetchSetlists(mbid: artistMbid, page: page)) { result in
+			 if let result = result {
+				let filteredSetlists = result.setlist?.filter {
+				  $0.venue?.name != "SBS Inkigayo"
+				  && $0.venue?.name != "M Countdown"
+				  && $0.venue?.name != "Show! Music Core"
+				  && $0.venue?.name != "KBS Music Bank"
+				  && $0.venue?.name != "Show Champion"
+				  && $0.venue?.name != "The Show"
+				  && $0.venue?.name != "KBS Cool FM"
+				} ?? []
+
+				DispatchQueue.main.async {
+				  self.setlists = filteredSetlists
+				  self.totalPage = Int((result.total ?? 1) / (result.itemsPerPage ?? 1) + 1)
+				  self.isLoadingSetlist = false
+				}
+			 } else {
+				self.isLoadingSetlist = false
+				print("Failed to fetch setlist data.")
+			 }
+		 }
     }
   }
   
   func fetchNextPage(artistMbid: String) {
     page += 1
     self.isLoadingNextPage = true
-    dataService.fetchSetlistsFromSetlistFM(artistMbid: artistMbid, page: page) { result in
-      if let result = result {
-        let filteredSetlists = result.setlist?.filter { $0.venue?.name != "SBS Inkigayo"
-          && $0.venue?.name != "M Countdown"
-          && $0.venue?.name != "Show! Music Core"
-          && $0.venue?.name != "KBS Music Bank"
-          && $0.venue?.name != "Show Champion"
-          && $0.venue?.name != "The Show"
-          && $0.venue?.name != "KBS Cool FM"
-        } ?? []
-        DispatchQueue.main.async {
-          self.setlists?.append(contentsOf: filteredSetlists )
-          self.isLoadingNextPage = false
-        }
-      } else {
-        self.isLoadingNextPage = false
-        print("Failed to fetch setlist data.")
-      }
-    }
+	  
+	  dataService.callRequest(type: SetlistListModel.self, api: .fetchSetlists(mbid: artistMbid, page: page)) { result in
+		  if let result = result {
+			 let filteredSetlists = result.setlist?.filter {
+				$0.venue?.name != "SBS Inkigayo"
+				&& $0.venue?.name != "M Countdown"
+				&& $0.venue?.name != "Show! Music Core"
+				&& $0.venue?.name != "KBS Music Bank"
+				&& $0.venue?.name != "Show Champion"
+				&& $0.venue?.name != "The Show"
+				&& $0.venue?.name != "KBS Cool FM"
+			 } ?? []
+
+			 DispatchQueue.main.async {
+				self.setlists = filteredSetlists
+				self.totalPage = Int((result.total ?? 1) / (result.itemsPerPage ?? 1) + 1)
+				self.isLoadingSetlist = false
+			 }
+		  } else {
+			 self.isLoadingSetlist = false
+			 print("Failed to fetch setlist data.")
+		  }
+	  }
   }
   
   func getFormattedDateFromString(date: String, format: String) -> String? {

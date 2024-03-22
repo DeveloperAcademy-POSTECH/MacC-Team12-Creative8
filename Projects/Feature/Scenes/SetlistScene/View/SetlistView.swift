@@ -73,35 +73,35 @@ struct SetlistView: View {
       // TODO: 유튜브뮤직
       vm.showModal.toggle()
     }), dismissButton: CustomAlertButton(title: "취소", action: {
-      vm.showModal.toggle()
-      exportViewModel.showAppleMusicAlert.toggle()
-    }),
-     isPresented: $exportViewModel.showYouTubeAlert,
-     artistInfo: artistInfo,
-     setlist: setlist,
-     exportViewModel: exportViewModel
-    )
-    .toolbar(.hidden, for: .tabBar)
-    .navigationBarTitleDisplayMode(.inline)
-    .background(Color.backgroundWhite)
-    .edgesIgnoringSafeArea(.bottom)
-    .onAppear {
-      if setlistId != nil {
-        vm.isLoading = true
-        vm.dataService.fetchOneSetlistFromSetlistFM(setlistId: setlistId!) { result in
-          if let result = result {
-            DispatchQueue.main.async {
-              self.setlist = result
-              vm.dataManager.modelContext = modelContext
-              vm.isBookmarked = vm.dataManager.isAddedConcert(concertInfo, setlist?.id ?? "")
-              vm.isLoading = false
-            }
-          }
-        }
-      } else {
-        vm.dataManager.modelContext = modelContext
-        vm.isBookmarked = vm.dataManager.isAddedConcert(concertInfo, setlist?.id ?? "")
-      }
+		 vm.showModal.toggle()
+		 exportViewModel.showAppleMusicAlert.toggle()
+	 }),
+					  isPresented: $exportViewModel.showYouTubeAlert,
+					  artistInfo: artistInfo,
+					  setlist: setlist,
+					  exportViewModel: exportViewModel
+	 )
+	 .toolbar(.hidden, for: .tabBar)
+	 .navigationBarTitleDisplayMode(.inline)
+	 .background(Color.backgroundWhite)
+	 .edgesIgnoringSafeArea(.bottom)
+	 .onAppear {
+		 if setlistId != nil {
+			 vm.isLoading = true
+			 vm.dataService.callRequest(type: Setlist.self, api: .fetchOneSetlist(setlistID: setlistId!)) { result in
+				 if let result = result {
+					 DispatchQueue.main.async {
+						 self.setlist = result
+						 vm.dataManager.modelContext = modelContext
+						 vm.isBookmarked = vm.dataManager.isAddedConcert(concertInfo, setlist?.id ?? "")
+						 vm.isLoading = false
+					 }
+				 }
+			 }
+		 } else {
+			 vm.dataManager.modelContext = modelContext
+			 vm.isBookmarked = vm.dataManager.isAddedConcert(concertInfo, setlist?.id ?? "")
+		 }
       
       if artistInfo.songList == nil || artistInfo.songList?.isEmpty == true {
         vm.artistDataManager.getArtistInfo(artistInfo: artistInfo) { result in

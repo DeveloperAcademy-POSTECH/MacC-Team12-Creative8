@@ -33,26 +33,29 @@ final class MainViewModel: ObservableObject {
   
   func getSetlistsFromSetlistFM(artistMbid: String, idx: Int) {
     self.isLoading = true
-    dataService.fetchSetlistsFromSetlistFM(artistMbid: artistMbid, page: 1) { result in
-      if let result = result {
-        let filteredSetlists = result.setlist?.filter {
-          $0.venue?.name != "SBS Inkigayo"
-          && $0.venue?.name != "M Countdown"
-          && $0.venue?.name != "Show! Music Core"
-          && $0.venue?.name != "KBS Music Bank"
-          && $0.venue?.name != "Show Champion"
-          && $0.venue?.name != "The Show"
-          && $0.venue?.name != "KBS Cool FM"
-        } ?? []
-        DispatchQueue.main.async {
-          self.setlists[idx] = filteredSetlists
-          self.isLoading = false
-        }
-      } else {
-        self.isLoading = false
-        print("Failed to fetch setlist data.")
-      }
-    }
+
+	  dataService.callRequest(type: SetlistListModel.self, api: .fetchSetlists(mbid: artistMbid, page: 1)) { result in
+		  if let result = result {
+			 let filteredSetlists = result.setlist?.filter {
+				$0.venue?.name != "SBS Inkigayo"
+				&& $0.venue?.name != "M Countdown"
+				&& $0.venue?.name != "Show! Music Core"
+				&& $0.venue?.name != "KBS Music Bank"
+				&& $0.venue?.name != "Show Champion"
+				&& $0.venue?.name != "The Show"
+				&& $0.venue?.name != "KBS Cool FM"
+			 } ?? []
+			 DispatchQueue.main.async {
+				self.setlists[idx] = filteredSetlists
+				self.isLoading = false
+			 }
+		  } else {
+			 self.isLoading = false
+			 print("Failed to fetch setlist data.")
+		  }
+
+	  }
+
   }
   
   func getFormattedDateAndMonth(date: String) -> String? {
