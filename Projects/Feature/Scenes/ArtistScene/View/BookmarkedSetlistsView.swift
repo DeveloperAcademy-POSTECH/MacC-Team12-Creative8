@@ -100,10 +100,10 @@ struct BookmarkedSetlistsView: View {
         
         // MARK: Date
         VStack {
-          Text(vm.getFormattedDateFromDate(date: concert.setlist.date, format: "yyyy"))
+          Text(vm.getFormattedDate(date: concert.setlist.date, format: "yyyy"))
             .foregroundStyle(Color.fontGrey25)
             .tracking(1)
-          Text(vm.getFormattedDateFromDate(date: concert.setlist.date, format: "MM.dd"))
+          Text(vm.getFormattedDate(date: concert.setlist.date, format: "MM.dd"))
             .foregroundStyle(Color.mainBlack)
         }
         .font(.headline)

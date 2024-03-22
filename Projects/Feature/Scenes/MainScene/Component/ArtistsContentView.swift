@@ -73,10 +73,10 @@ struct ArtistsContentView: View {
             NavigationLink(value: NavigationDelivery(setlistId: item?.id ?? "", artistInfo: artistInfo)) {
               HStack(spacing: 0) {
                 VStack(alignment: .center) {
-                  Text(viewModel.getFormattedYear(date: item?.eventDate ?? "yyyy") ?? "yyyy")
+                  Text(viewModel.getFormattedDate(date: item?.eventDate ?? "", format: "yyyy") ?? "")
                     .foregroundStyle(Color.fontGrey25)
                     .tracking(0.5)
-                  Text(viewModel.dayAndMonthDateFormatter(inputDate: item?.eventDate ?? "") ?? "")
+                  Text(viewModel.getFormattedDate(date: item?.eventDate ?? "", format: "MM.dd") ?? "")
                     .foregroundStyle(Color.mainBlack)
                 }
                 .font(.headline)

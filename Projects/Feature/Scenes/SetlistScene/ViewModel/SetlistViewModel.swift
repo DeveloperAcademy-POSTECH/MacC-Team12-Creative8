@@ -54,22 +54,6 @@ final class SetlistViewModel: ObservableObject {
     }
   }
   
-  func dayAndMonthDateFormatter(inputDate: String) -> String? {
-    guard let languageCode = Locale.current.language.languageCode?.identifier else { return "" }
-
-      let dateFormatter = DateFormatter()
-      dateFormatter.dateFormat = "dd-MM-yyyy"
-
-      // 입력된 날짜 문자열을 "dd-MM-yyyy" 형식으로 변환
-      guard let convertedDate = dateFormatter.date(from: inputDate) else {
-          return ""
-      }
-
-      dateFormatter.dateFormat = (languageCode == "ko") ? "MM.dd" : "dd.MM"
-
-      // 변환된 날짜를 설정한 형식으로 문자열로 반환
-      return dateFormatter.string(from: convertedDate)
-  }
   func  allDateFormatter(inputDate: String) -> String? {
     guard let languageCode = Locale.current.language.languageCode?.identifier else { return "" }
 
